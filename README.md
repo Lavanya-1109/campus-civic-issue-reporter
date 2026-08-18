@@ -27,6 +27,22 @@ Students and faculty can report an issue with a photo, category, and location. T
 - Manual department override
 - Location entry via **Building → Floor → Area/Room** selection (dropdowns + free text) rather than GPS/map pin — see [Location Design](#location-design) below
 
+### Auto-Escalation
+To prevent high-impact issues from sitting unnoticed in the queue, the system automatically escalates an issue's priority when it crosses a defined upvote threshold while still in `Reported` or `Ongoing` status.
+
+- On crossing the threshold, the issue is flagged **High Priority** and surfaced at the top of both the Administrator's and Super-Admin's dashboards.
+- Super-Admin is notified (via the notification system) when an issue in any department escalates, giving oversight visibility even if the owning Administrator hasn't acted yet.
+- Escalation status is purely a priority/visibility flag — it does not change the `Reported → Ongoing → Finished` lifecycle itself, just how the issue is ranked and who's alerted.
+
+**Threshold design:** the threshold is configurable (not hardcoded), set by the Super-Admin, so it can be tuned per category rather than applied as one flat number across the board. The rationale:
+
+- **Safety-critical categories** (electrical, structural, fire safety) warrant a very low threshold (~2–3 upvotes) — severity matters more than volume, and these shouldn't wait for popularity to escalate.
+- **High-traffic common areas** (library, cafeteria, sports complex) can use a higher threshold (~8–12 upvotes) since visibility is large and genuine problems will naturally accumulate upvotes fast.
+- **Hostel/block-specific issues** sit in between (~5–8 upvotes), reflecting a smaller audience per location.
+- **Low-severity/cosmetic issues** (paint, furniture) use a higher bar (~15+ upvotes) so "High Priority" doesn't lose meaning.
+
+For the MVP, a single **default threshold of 5 upvotes** is used across categories, since real usage data from Thapar isn't available yet to calibrate per-category values. This default is intended to be reviewed and tuned post-rollout based on actual reporting patterns.
+
 ### Duplicate Detection
 When a new report is submitted, the system checks for likely duplicates among open issues using:
 1. **Location match** — same building + floor (exact/dropdown match), fuzzy match on area/room text
@@ -38,6 +54,13 @@ If a likely match is found, the reporter is shown the existing issue and prompte
 
 ### Status Tracking
 Each issue moves through: `Reported → Ongoing → Finished`, updated only by the Administrator of the owning department (or Super-Admin).
+
+### Notifications
+To close the feedback loop after a report is submitted, the system sends in-app notifications for key events:
+
+- **Status change alerts** — the original reporter is notified when their issue moves `Reported → Ongoing → Finished`.
+- **Duplicate/upvote alerts** — if someone upvotes an issue you originally reported, you're notified that it's gaining traction.
+- **Admin-side alerts** — Administrators are notified when a new report lands in their department; Super-Admin is notified when an issue escalates (see [Auto-Escalation](#auto-escalation)) in any department.
 
 ## Location Design
 
@@ -56,6 +79,9 @@ This is more precise for indoor campus locations, avoids map API dependencies, a
 - **Image storage:** Cloudinary / AWS S3
 - **Auth:** JWT-based, role-based access control (RBAC)
 - **Duplicate detection:** fuzzy string matching / NLP similarity on description text, combined with structured location and department matching
+**Notifications:** in-app, backed by a `notifications` table (user_id, issue_id, type, message, read_status, timestamp); delivery via polling (frontend checks for new notifications at regular intervals) rather than WebSockets, to keep infrastructure simple
+- **Escalation:** threshold check runs on every upvote event against a configurable `escalation_threshold` value (default: 5, Super-Admin adjustable, tunable per category); adds a `priority` field (Normal / High) to the issue schema
+
 
 ## Status
 
