@@ -313,7 +313,7 @@ A typical 3-tier web architecture:
     for straightforward indexing on the fields duplicate detection and
     dashboards query most (location, department, status).
 \end{itemize}
-Supporting infrastructure: Cloudinary or AWS S3 for image attachments,
+Supporting and Infrastructure: Cloudinary or AWS S3 for image attachments,
 kept out of the primary database; JWT-based sessions with role-based
 access control enforced at the API layer for all four roles; and
 notification delivery via polling rather than WebSockets, to keep the
@@ -633,7 +633,7 @@ provided infrastructure.
 % =======================================================
 \section{Summary}
 % =======================================================
-This project proposes Civic Issue Reporter, a role-based web platform
+This project proposes a civic issue reporter, a role-based web platform
 for reporting, routing, and resolving campus infrastructure issues at
 TIET. Its core engineering contributions are a submission flow that
 actively suppresses duplicate reports rather than merely listing them,
