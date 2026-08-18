@@ -7,6 +7,7 @@
 \usepackage{xcolor}
 \usepackage{booktabs}
 \usepackage{array}
+\usepackage{tabularx}
 \usepackage{amssymb}  % provides \checkmark, used in the User Roles table
 
 % -----------------------------------------------------
@@ -16,15 +17,12 @@
 % Variable: Lab Instructor
 \makeatletter
 \newcommand{\BvrSetLabInstructor}[1]{\gdef\Bvr@LabInstructor{#1}}
-% default (placeholder -- fill in before submission)
 \newcommand{\Bvr@LabInstructor}{Ms. Anushka}
-% public accessor
 \newcommand{\BvrLabInstructorValue}{\Bvr@LabInstructor}
 \makeatother
 
 % Add subtitle
 \usepackage{titling}
-% -- Set title bold
 \pretitle{\begin{center}\bfseries\fontsize{18bp}{18bp}\selectfont}
 \makeatletter
 \newcommand{\BvrSubtitle}[1]{%
@@ -147,6 +145,11 @@ maintenance work itself is carried out.
 % =======================================================
 \section{Objectives}
 % =======================================================
+\textbf{Primary goal:} To design and deploy a role-based web platform
+that gives the TIET campus community a structured, trackable channel for
+reporting and resolving infrastructure issues, while reducing duplicate
+reporting and improving response time to high-priority faults.
+
 \begin{itemize}[leftmargin=0.7cm]
   \item Give students and faculty a single, low-friction channel to
     report infrastructure issues with a photo, category, and precise
@@ -493,6 +496,55 @@ infrastructure from scratch:
 We will use these mature, off-the-shelf components to focus engineering
 effort on workflow design, duplicate/escalation logic, and measurement,
 rather than on inventing new infrastructure.
+
+
+% =======================================================
+\section{Timeline}
+% =======================================================
+The schedule below breaks delivery into weekly phases, in line with the
+iteration cadence described under Time-to-value, and includes an
+explicit buffer week to absorb slippage rather than letting it erode the
+final wrap-up:
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}c l X X@{}}
+  \toprule
+  \textbf{Wk} & \textbf{Phase} & \textbf{Task} & \textbf{Deliverable} \\
+  \midrule
+  1--2   & Planning    & Requirements; schema, roles, API contract & Proposal + ER diagram \\
+  3--4   & Core build  & Auth (JWT/RBAC); submission form & Submission-to-DB flow \\
+  5--6   & Core build  & Duplicate-detection heuristic; auto-routing & Duplicate-check prototype \\
+  7--8   & Core build  & Admin/Super-Admin dashboards; status lifecycle & Role dashboards (MVP core) \\
+  9      & Integration & Escalation logic; notifications & Escalation + notifications live \\
+  10     & Testing     & CI/CD pipeline; QA testing & Staging deployment, tests \\
+  11     & Pilot       & Rollout: 1--2 hostels + 1 academic block & Pilot data collection begins \\
+  12     & \textbf{Buffer} & Bug fixes; unresolved scope & Stabilized build \\
+  13--14 & Wrap-up     & Metric analysis (\S\ref{sec:eval-primary}); report prep & Final report + presentation \\
+  \bottomrule
+\end{tabularx}
+\end{center}
+
+
+% =======================================================
+\section{Resources and Budget}
+% =======================================================
+\textbf{Human resources:} A 4-member team dividing work across
+frontend (React UI for reporters and dashboards), backend/API
+(authentication, routing, status and escalation logic), duplicate-
+detection and data modelling (heuristic design, PostgreSQL schema), and
+DevOps (CI/CD, staging deployment, pilot coordination), coordinated
+through a shared Git repository.
+
+\textbf{Material resources:} GitHub for version control and CI (GitHub
+Actions); a managed PostgreSQL instance (free/student tier, e.g.,
+Supabase or Railway); Cloudinary/AWS S3 free tier for image storage;
+and free-tier hosting (e.g., Vercel/Render) for staging and pilot
+deployment, consistent with the Engine Availability Heuristic above.
+
+\textbf{Budget:} No external funding required; all resources are
+available through free or managed-tier services and university-
+provided infrastructure.
 
 
 % =======================================================
