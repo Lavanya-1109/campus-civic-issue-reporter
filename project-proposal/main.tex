@@ -8,20 +8,14 @@
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{tabularx}
-\usepackage{amssymb}  % provides \checkmark, used in the User Roles table
-
-% -----------------------------------------------------
-% bvraghav-tiet-ucs503p-article.sty
-% -----------------------------------------------------
-
-% Variable: Lab Instructor
+\usepackage{amssymb}  
 \makeatletter
 \newcommand{\BvrSetLabInstructor}[1]{\gdef\Bvr@LabInstructor{#1}}
 \newcommand{\Bvr@LabInstructor}{Ms. Anushka}
 \newcommand{\BvrLabInstructorValue}{\Bvr@LabInstructor}
 \makeatother
 
-% Add subtitle
+
 \usepackage{titling}
 \pretitle{\begin{center}\bfseries\fontsize{18bp}{18bp}\selectfont}
 \makeatletter
@@ -34,10 +28,9 @@
 }
 \makeatother
 
-% Hints in the section title(s)
+
 \newcommand{\BvrHint}[1]{{\normalfont\normalsize\itshape\hfill #1}}
 
-% -----------------------------------------------------
 
 \title{Civic Issue Reporter}
 
@@ -71,9 +64,9 @@
 \maketitle
 
 
-% =======================================================
+
 \section{Higher-Order Goal}
-% =======================================================
+
 This project applies standard software engineering practice, including
 requirement analysis, system design, and structured development, to a real
 campus problem. The broader motivation is to improve campus infrastructure
@@ -85,9 +78,9 @@ Thapar campus, including academic blocks, hostels, the library,
 cafeterias, the sports complex, and other common areas.
 
 
-% =======================================================
+
 \section{Time-to-value}
-% =======================================================
+
 \begin{itemize}[leftmargin=0.7cm]
   \item We will deliver meaningful increments quickly by prototyping the
     core reporting-and-tracking workflow and validating it with a small
@@ -104,11 +97,11 @@ cafeterias, the sports complex, and other common areas.
 \end{itemize}
 
 
-% =======================================================
+
 \section{Problem Statement}
-% =======================================================
-Campus infrastructure faults -- broken equipment, plumbing leaks, faulty
-wiring, damaged furniture, non-functional washrooms, unsafe walkways -- are
+
+Campus infrastructure faults - broken equipment, plumbing leaks, faulty
+wiring, damaged furniture, non-functional washrooms, unsafe walkways - are
 today reported informally: through hostel WhatsApp groups, verbal
 complaints to wardens, or ad-hoc emails to department staff. This produces
 several concrete problems:
@@ -129,7 +122,7 @@ several concrete problems:
     known, and administrators re-investigate what has already been
     logged.
   \item \textbf{No institutional visibility:} there is no aggregate view
-    -- by building, department, or category -- that lets facilities
+    - by building, department, or category - that lets facilities
     management identify recurring or high-impact problem areas.
 \end{itemize}
 
@@ -142,9 +135,9 @@ directly addresses that bottleneck without requiring any change to how
 maintenance work itself is carried out.
 
 
-% =======================================================
+
 \section{Objectives}
-% =======================================================
+
 \textbf{Primary goal:} To design and deploy a role-based web platform
 that gives the TIET campus community a structured, trackable channel for
 reporting and resolving infrastructure issues, while reducing duplicate
@@ -172,9 +165,9 @@ reporting and improving response time to high-priority faults.
 \end{itemize}
 
 
-% =======================================================
+
 \section{Proposed Solution}
-% =======================================================
+
 
 \subsection{User Roles}
 Access is role-based, with two reporting roles and two administrative
@@ -200,7 +193,7 @@ existing report. Administrators are scoped to a single department/category
 and move issues through their lifecycle. The Super-Admin has full
 cross-department visibility and control, and is additionally the only
 role notified on every escalation event regardless of which department
-owns the issue -- this gives an institutional oversight layer even when
+owns the issue; this gives an institutional oversight layer even when
 an owning Administrator has not yet acted.
 
 \subsection{Core Features}
@@ -267,9 +260,9 @@ an owning Administrator has not yet acted.
 \end{itemize}
 
 
-% =======================================================
+
 \section{Solution Approach}
-% =======================================================
+
 This is an engineering course project, so the emphasis is on scalable
 workflow and system-engineering concerns, duplicate handling, service
 architecture, and delivery pipeline, rather than on novel algorithm
@@ -280,11 +273,11 @@ Duplicate detection is heuristic-based, combining three signals so that
 no single weak signal can produce a false match on its own:
 
 \begin{enumerate}[leftmargin=0.7cm]
-  \item \textbf{Location match} -- exact match on building and floor,
+  \item \textbf{Location match} - exact match on building and floor,
     fuzzy match on the free-text area/room field.
-  \item \textbf{Department/category match} -- the new report is only
+  \item \textbf{Department/category match} - the new report is only
     compared against issues already routed to the same department.
-  \item \textbf{Description similarity} -- a simple similarity measure
+  \item \textbf{Description similarity} - a simple similarity measure
     (e.g., token overlap or TF-IDF cosine similarity with a threshold,
     without any claim to state-of-the-art accuracy) between the new
     description and existing open descriptions within the matched
@@ -294,8 +287,8 @@ no single weak signal can produce a false match on its own:
 The comparison set is restricted to issues still open (not
 \texttt{Finished}), on the reasoning that a resolved issue recurring is a
 \emph{new} problem worth a fresh report, not a duplicate. The system
-surfaces the top candidate to the reporter for a human decision -- it
-never fully auto-merges, auto-deletes, or auto-rejects a submission --
+surfaces the top candidate to the reporter for a human decision, and it
+never fully auto-merges, auto-deletes, or auto-rejects a submission and 
 keeping a human in the loop for a step that directly affects data
 quality.
 
@@ -334,7 +327,7 @@ MVP's infrastructure and failure modes simple.
     notification types described above.
   \item Duplicate-location matching is a structured field comparison
     (exact building/floor, fuzzy area/room text) rather than a
-    geospatial radius calculation -- a deliberate trade-off, since GPS
+    geospatial radius calculation which is a deliberate trade-off, since GPS
     is unreliable indoors and map APIs add cost and complexity the MVP
     does not need.
 \end{itemize}
@@ -351,10 +344,9 @@ CI/CD will be used to:
 \end{itemize}
 
 
-% =======================================================
 \section{Auto-Escalation Design}
 \label{sec:auto-escalation}
-% =======================================================
+
 A single flat upvote threshold across every category would either
 (a) be too high for safety-critical issues, which should not have to
 wait for popularity to earn attention, or (b) be too low for
@@ -364,14 +356,14 @@ the Super-Admin:
 
 \begin{itemize}[leftmargin=0.7cm]
   \item \textbf{Safety-critical} (electrical, structural, fire safety):
-    a low threshold ($\sim$2--3 upvotes) -- severity, not volume, should
+    a low threshold ($\sim$2-3 upvotes) - severity, not volume, should
     drive escalation here.
   \item \textbf{High-traffic common areas} (library, cafeteria, sports
-    complex): a higher threshold ($\sim$8--12 upvotes), since large
+    complex): a higher threshold ($\sim$8-12 upvotes), since large
     natural visibility means genuine problems accumulate upvotes
     quickly on their own.
   \item \textbf{Hostel/block-specific issues:} an intermediate threshold
-    ($\sim$5--8 upvotes), reflecting a smaller audience per location.
+    ($\sim$5-8 upvotes), reflecting a smaller audience per location.
   \item \textbf{Low-severity/cosmetic issues} (paint, furniture): a
     higher bar ($\sim$15+ upvotes), so that ``High Priority'' is not
     diluted.
@@ -382,12 +374,12 @@ across all categories, since no real usage data from TIET exists yet to
 calibrate per-category values responsibly. This default is treated as a
 known, temporary simplification, explicitly intended to be reviewed and
 tuned per category after the pilot, once real reporting-volume data is
-available -- not as a final design decision.
+available, not as a final design decision.
 
 
-% =======================================================
+
 \section{Evaluation Criteria}
-% =======================================================
+
 The system's original README does not specify success metrics; the
 following are proposed based on the features actually being built, so
 that each stated feature has a corresponding measurable outcome.
@@ -411,7 +403,7 @@ that each stated feature has a corresponding measurable outcome.
 \begin{itemize}[leftmargin=0.7cm]
   \item \textbf{Escalation precision:} proportion of auto-escalated
     issues that Administrators, on review, agree warranted High
-    Priority -- a check on whether the MVP's flat threshold is behaving
+    Priority: a check on whether the MVP's flat threshold is behaving
     reasonably ahead of per-category tuning.
   \item \textbf{Resolution time by category:} time from
     \texttt{Reported} to \texttt{Finished}, broken down by category, to
@@ -419,7 +411,7 @@ that each stated feature has a corresponding measurable outcome.
     reporting an institution-wide average.
   \item \textbf{Duplicate deflection rate:} proportion of submissions
     that end as an upvote on an existing issue rather than a new report
-    -- a direct measure of how much redundant reporting is being
+    : a direct measure of how much redundant reporting is being
     prevented.
   \item \textbf{Notification effectiveness:} proportion of
     status-change notifications that are read (via
@@ -431,8 +423,8 @@ that each stated feature has a corresponding measurable outcome.
 \subsection{Pilot Validation Plan}
 \label{sec:pilot-validation}
 \begin{itemize}[leftmargin=0.7cm]
-  \item Run the pilot within a bounded scope -- e.g., one or two hostel
-    blocks plus one academic block -- rather than campus-wide, to keep
+  \item Run the pilot within a bounded scope - e.g., one or two hostel
+    blocks plus one academic block - rather than campus-wide, to keep
     the reporting volume interpretable within the course timeline.
   \item Recruit a small set of student/faculty reporters and, for
     Administrator accounts, either real departmental staff (if
@@ -444,9 +436,9 @@ that each stated feature has a corresponding measurable outcome.
 \end{itemize}
 
 
-% =======================================================
+
 \section{Scalability and Deployment}
-% =======================================================
+
 \begin{enumerate}[leftmargin=0.7cm]
   \item \textbf{Theoretical scalability:}
     \begin{itemize}[leftmargin=0.7cm]
@@ -473,9 +465,9 @@ that each stated feature has a corresponding measurable outcome.
 \end{enumerate}
 
 
-% =======================================================
+
 \section{Engine Availability Heuristic}
-% =======================================================
+
 A mature set of ``engines'' (tooling/services) is available to
 implement this as a web-based project, so the team is not building
 infrastructure from scratch:
@@ -498,9 +490,9 @@ effort on workflow design, duplicate/escalation logic, and measurement,
 rather than on inventing new infrastructure.
 
 
-% =======================================================
+
 \section{Timeline}
-% =======================================================
+
 The schedule below breaks delivery into weekly phases, in line with the
 iteration cadence described under Time-to-value, and includes an
 explicit buffer week to absorb slippage rather than letting it erode the
@@ -518,7 +510,7 @@ final wrap-up:
   7--8   & Core build  & Admin/Super-Admin dashboards; status lifecycle & Role dashboards (MVP core) \\
   9      & Integration & Escalation logic; notifications & Escalation + notifications live \\
   10     & Testing     & CI/CD pipeline; QA testing & Staging deployment, tests \\
-  11     & Pilot       & Rollout: 1--2 hostels + 1 academic block & Pilot data collection begins \\
+  11     & Pilot       & Rollout: 1-2 hostels + 1 academic block & Pilot data collection begins \\
   12     & \textbf{Buffer} & Bug fixes; unresolved scope & Stabilized build \\
   13--14 & Wrap-up     & Metric analysis (\S\ref{sec:eval-primary}); report prep & Final report + presentation \\
   \bottomrule
@@ -526,9 +518,9 @@ final wrap-up:
 \end{center}
 
 
-% =======================================================
+
 \section{Resources and Budget}
-% =======================================================
+
 \textbf{Human resources:} A 4-member team dividing work across
 frontend (React UI for reporters and dashboards), backend/API
 (authentication, routing, status and escalation logic), duplicate-
@@ -547,9 +539,9 @@ available through free or managed-tier services and university-
 provided infrastructure.
 
 
-% =======================================================
+
 \section{Project Scope and Deliverables}
-% =======================================================
+
 
 \subsection{MVP Deliverables}
 \begin{itemize}[leftmargin=0.7cm]
@@ -589,9 +581,9 @@ provided infrastructure.
 \end{itemize}
 
 
-% =======================================================
+
 \section{Risks and Mitigations}
-% =======================================================
+
 \begin{itemize}[leftmargin=0.7cm]
   \item \textbf{Duplicate false positives/negatives:} an overly
     aggressive similarity threshold could push genuinely distinct
@@ -630,9 +622,9 @@ provided infrastructure.
 \end{itemize}
 
 
-% =======================================================
+
 \section{Summary}
-% =======================================================
+
 This project proposes a civic issue reporter, a role-based web platform
 for reporting, routing, and resolving campus infrastructure issues at
 TIET. Its core engineering contributions are a submission flow that
