@@ -126,7 +126,7 @@ several concrete problems:
     management identify recurring or high-impact problem areas.
 \end{itemize}
 
-\textbf{Why this matters now:} TIET's campus spans multiple hostels,
+\noindent\textbf{Why this matters now:} TIET's campus spans multiple hostels,
 academic blocks, and shared facilities maintained by different
 departments. As the reporting channel is informal and department-specific,
 the effective bottleneck is not maintenance capacity but \emph{issue
@@ -187,7 +187,7 @@ roles:
 \end{tabular}
 \end{center}
 
-Students and faculty are treated identically: both can submit reports,
+\noindent Students and faculty are treated identically: both can submit reports,
 browse the full (read-only) list of reported issues, and upvote an
 existing report. Administrators are scoped to a single department/category
 and move issues through their lifecycle. The Super-Admin has full
@@ -284,7 +284,7 @@ no single weak signal can produce a false match on its own:
     location/department bucket.
 \end{enumerate}
 
-The comparison set is restricted to issues still open (not
+\noindent The comparison set is restricted to issues still open (not
 \texttt{Finished}), on the reasoning that a resolved issue recurring is a
 \emph{new} problem worth a fresh report, not a duplicate. The system
 surfaces the top candidate to the reporter for a human decision, and it
@@ -293,20 +293,33 @@ keeping a human in the loop for a step that directly affects data
 quality.
 
 \subsection{Web Architecture}
-A typical 3-tier web architecture:
-\begin{itemize}[leftmargin=0.7cm]
-  \item \textbf{Frontend:} React, a responsive UI for both reporters
-    (submission form, status view) and administrators (dashboard),
-    usable on low-to-mid range student devices.
-  \item \textbf{Backend API:} Node.js/Express (or Flask as a fallback),
-    exposing a REST API for authentication, submission, routing, status
-    transitions, and escalation logic.
-  \item \textbf{Database:} PostgreSQL, chosen for relational integrity
-    between issues, departments, users, upvotes, and notifications, and
-    for straightforward indexing on the fields duplicate detection and
-    dashboards query most (location, department, status).
-\end{itemize}
-Supporting and Infrastructure: Cloudinary or AWS S3 for image attachments,
+
+A typical 3-tier web architecture is shown below:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{2.5cm}|p{4cm}|p{8cm}|}
+\hline
+\textbf{Tier} & \textbf{Technology} & \textbf{Purpose} \\
+\hline
+\textbf{Frontend} &
+React &
+Responsive UI for reporters (submission form, status view) and administrators (dashboard), usable on low-to-mid range student devices. \\
+\hline
+\textbf{Backend API} &
+Node.js/Express (or Flask as a fallback) &
+REST API for authentication, submission, routing, status transitions, and escalation logic. \\
+\hline
+\textbf{Database} &
+PostgreSQL &
+Maintains relational integrity between issues, departments, users, upvotes, and notifications. Supports indexing for duplicate detection and dashboards using fields such as location, department, and status. \\
+\hline
+\end{tabular}
+\caption{Three-Tier Web Architecture}
+\label{tab:web-architecture}
+\end{table}
+
+\noindent Supporting and Infrastructure: Cloudinary or AWS S3 for image attachments,
 kept out of the primary database; JWT-based sessions with role-based
 access control enforced at the API layer for all four roles; and
 notification delivery via polling rather than WebSockets, to keep the
@@ -504,15 +517,15 @@ final wrap-up:
   \toprule
   \textbf{Wk} & \textbf{Phase} & \textbf{Task} & \textbf{Deliverable} \\
   \midrule
-  1--2   & Planning    & Requirements; schema, roles, API contract & Proposal + ER diagram \\
+  1--2   & Planning    & Requirements; schema, roles, API contract & Proposal , ER diagram \\
   3--4   & Core build  & Auth (JWT/RBAC); submission form & Submission-to-DB flow \\
   5--6   & Core build  & Duplicate-detection heuristic; auto-routing & Duplicate-check prototype \\
   7--8   & Core build  & Admin/Super-Admin dashboards; status lifecycle & Role dashboards (MVP core) \\
-  9      & Integration & Escalation logic; notifications & Escalation + notifications live \\
+  9      & Integration & Escalation logic; notifications & Escalation , notifications live \\
   10     & Testing     & CI/CD pipeline; QA testing & Staging deployment, tests \\
-  11     & Pilot       & Rollout: 1-2 hostels + 1 academic block & Pilot data collection begins \\
+  11     & Pilot       & Rollout: 1-2 hostels , 1 academic block & Pilot data collection begins \\
   12     & \textbf{Buffer} & Bug fixes; unresolved scope & Stabilized build \\
-  13--14 & Wrap-up     & Metric analysis (\S\ref{sec:eval-primary}); report prep & Final report + presentation \\
+  13--14 & Wrap-up     & Metric analysis (\S\ref{sec:eval-primary}); report prep & Final report , presentation \\
   \bottomrule
 \end{tabularx}
 \end{center}
@@ -528,13 +541,17 @@ detection and data modelling (heuristic design, PostgreSQL schema), and
 DevOps (CI/CD, staging deployment, pilot coordination), coordinated
 through a shared Git repository.
 
-\textbf{Material resources:} GitHub for version control and CI (GitHub
+\vspace{1em}
+
+\noindent\textbf{Material resources:} GitHub for version control and CI (GitHub
 Actions); a managed PostgreSQL instance (free/student tier, e.g.,
 Supabase or Railway); Cloudinary/AWS S3 free tier for image storage;
 and free-tier hosting (e.g., Vercel/Render) for staging and pilot
 deployment, consistent with the Engine Availability Heuristic above.
 
-\textbf{Budget:} No external funding required; all resources are
+\vspace{1em}
+
+\noindent\textbf{Budget:} No external funding required; all resources are
 available through free or managed-tier services and university-
 provided infrastructure.
 
@@ -625,17 +642,53 @@ provided infrastructure.
 
 \section{Summary}
 
-This project proposes a civic issue reporter, a role-based web platform
-for reporting, routing, and resolving campus infrastructure issues at
-TIET. Its core engineering contributions are a submission flow that
-actively suppresses duplicate reports rather than merely listing them,
-and a priority-escalation mechanism designed from the outset to be
-severity-aware rather than purely volume-driven, even though the MVP
-ships with a single calibratable default. The proposal defines primary
-and secondary metrics directly tied to these mechanisms
-(time-to-first-action, duplicate-detection precision, escalation
-precision) so that the pilot produces the data needed to move from the
-MVP's flat defaults to the tuned, per-category design that motivated the
-system in the first place.
+This project proposes a \textbf{Civic Issue Reporter}, a role-based web
+platform for reporting, tracking, and resolving campus infrastructure
+issues at TIET. Students and faculty will be able to report problems such
+as electrical, plumbing, cleanliness, or other infrastructure issues,
+while department administrators will receive and manage issues related to
+their respective departments. A Super-Admin will provide overall
+supervision across departments.
 
+\vspace{1em}
+
+\noindent A major focus of the project is \textbf{reducing duplicate reports}.
+When a user submits a new issue, the system will compare it with existing
+unresolved issues using three factors: location, department/category, and
+similarity between issue descriptions. If a likely duplicate is found, the
+existing issue will be shown to the user, who can choose to upvote it
+instead of creating another report. The system will not automatically
+merge or reject reports, keeping the user involved in the final decision.
+
+\vspace{1em}
+
+\noindent The platform will also include a \textbf{priority and escalation
+mechanism}. In the initial MVP, an issue will be marked as high priority
+when its upvote count crosses a configurable threshold. The system is
+designed so that these thresholds can later be adjusted for different
+categories based on data collected during the pilot. This allows the
+project to move from a simple volume-based mechanism toward a more
+appropriate category- and severity-aware escalation system.
+
+\vspace{1em}
+
+\noindent The system will follow a \textbf{three-tier web architecture} consisting
+of a React frontend, a REST-based backend using Node.js/Express (with
+Flask as a possible fallback), and a PostgreSQL database. Image
+attachments will be stored separately using services such as Cloudinary or
+AWS S3. Role-based access control will ensure that students, faculty,
+administrators, and the Super-Admin can only perform actions permitted for
+their roles.
+
+\vspace{1em}
+
+\noindent The project will be evaluated using measurable metrics rather than only
+demonstrating that the application works. Important measures include
+\textbf{time-to-first-action}, \textbf{duplicate-detection precision},
+and \textbf{escalation precision}. A campus pilot will provide real usage
+data that can be used to evaluate the system and tune duplicate-detection
+and escalation thresholds. The overall goal is therefore not only to build
+a working issue-reporting platform, but to create a system that can
+gradually improve its routing, duplicate handling, and prioritization
+using evidence collected from actual campus use.
 \end{document}
