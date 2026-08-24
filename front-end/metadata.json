@@ -1,0 +1,6 @@
+{
+  "name": "Civic Issue Reporter",
+  "description": "A professional campus infrastructure issue reporting and resolution platform with multi-theme support (Executive Slate, Warm Stone, Midnight Charcoal), duplicate detection, role-based workflows, and automated SLA escalation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
