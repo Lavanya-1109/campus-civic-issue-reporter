@@ -1,0 +1,225 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>UnivPulse — Department Admin</title>
+<!-- Fonts & Material Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "outline": "#75777d",
+            "on-surface": "#131b2e",
+            "secondary-container": "#2170e4",
+            "on-error": "#ffffff",
+            "surface-container": "#eaedff",
+            "primary-container": "#1e293b",
+            "error-container": "#ffdad6",
+            "background": "#faf8ff",
+            "tertiary-fixed-dim": "#c0c1ff",
+            "on-tertiary-fixed": "#07006c",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed-variant": "#004395",
+            "inverse-surface": "#283044",
+            "on-secondary-fixed": "#001a42",
+            "on-primary-container": "#8590a6",
+            "secondary-fixed-dim": "#adc6ff",
+            "on-secondary": "#ffffff",
+            "on-primary-fixed": "#111c2d",
+            "tertiary": "#040057",
+            "on-background": "#131b2e",
+            "secondary-fixed": "#d8e2ff",
+            "on-primary-fixed-variant": "#3c475a",
+            "surface-dim": "#d2d9f4",
+            "on-error-container": "#93000a",
+            "primary-fixed": "#d8e3fb",
+            "surface-tint": "#545f73",
+            "tertiary-fixed": "#e1e0ff",
+            "secondary": "#0058be",
+            "surface-container-low": "#f2f3ff",
+            "primary-fixed-dim": "#bcc7de",
+            "tertiary-container": "#0d0093",
+            "surface-container-high": "#e2e7ff",
+            "outline-variant": "#c5c6cd",
+            "surface": "#faf8ff",
+            "on-tertiary-container": "#7f82ff",
+            "on-secondary-container": "#fefcff",
+            "on-surface-variant": "#45474c",
+            "surface-container-highest": "#dae2fd",
+            "surface-variant": "#dae2fd",
+            "on-tertiary-fixed-variant": "#2f2ebe",
+            "inverse-primary": "#bcc7de",
+            "inverse-on-surface": "#eef0ff",
+            "primary": "#091426",
+            "error": "#ba1a1a",
+            "surface-bright": "#faf8ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-3xl": "4rem",
+            "space-base": "1rem",
+            "layout-gutter-md": "1rem",
+            "space-2xs": "0.125rem",
+            "space-lg": "1.5rem",
+            "layout-gutter-sm": "0.75rem",
+            "layout-margin-tablet": "1.5rem",
+            "layout-gutter-lg": "1.5rem",
+            "space-md": "0.75rem",
+            "space-xl": "2rem",
+            "space-xs": "0.25rem",
+            "space-2xl": "3rem",
+            "layout-margin-desktop": "2rem",
+            "layout-margin-mobile": "1rem"
+          },
+          "fontFamily": {
+            "label-sm": ["Public Sans"],
+            "title-md": ["Manrope"],
+            "display-lg": ["Manrope"],
+            "code-sm": ["Public Sans"],
+            "label-md": ["Public Sans"],
+            "headline-sm": ["Manrope"],
+            "body-md": ["Public Sans"],
+            "display-lg-mobile": ["Manrope"],
+            "headline-lg": ["Manrope"],
+            "body-sm": ["Public Sans"],
+            "body-lg": ["Public Sans"],
+            "headline-md": ["Manrope"],
+            "headline-lg-mobile": ["Manrope"]
+          },
+          "fontSize": {
+            "label-sm": ["0.6875rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "title-md": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+            "display-lg": ["3rem", { "lineHeight": "3.5rem", "letterSpacing": "-0.025em", "fontWeight": "700" }],
+            "code-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.05em", "fontWeight": "500" }],
+            "label-md": ["0.8125rem", { "lineHeight": "1.125rem", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-sm": ["1.125rem", { "lineHeight": "1.625rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["0.9375rem", { "lineHeight": "1.5rem", "letterSpacing": "0", "fontWeight": "400" }],
+            "display-lg-mobile": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-sm": ["0.8125rem", { "lineHeight": "1.25rem", "letterSpacing": "0.005em", "fontWeight": "400" }],
+            "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "letterSpacing": "0", "fontWeight": "400" }],
+            "headline-md": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased selection:bg-secondary selection:text-on-secondary min-h-screen flex flex-col font-body-md">
+<!-- Top Navigation Header (Shared Component: TopNavBar) -->
+<header class="bg-surface-container-lowest border-b border-outline-variant shadow-sm sticky top-0 z-40">
+<div class="flex justify-between items-center w-full px-6 py-3 max-w-7xl mx-auto">
+<!-- Brand & Course Metadata -->
+<div class="flex items-center gap-3">
+<a class="text-headline-sm font-headline-sm font-bold text-primary tracking-tight flex items-center gap-2" href="#">
+<span class="w-8 h-8 rounded bg-primary text-surface-container-lowest flex items-center justify-center font-bold text-sm tracking-normal">UP</span>
+          UnivPulse
+        </a>
+<span class="text-label-sm font-label-sm text-outline px-2 py-0.5 border border-outline-variant rounded bg-surface-container-low">UCS503 Course Project</span>
+<span class="hidden sm:inline-flex items-center gap-1.5 text-label-sm font-label-sm bg-primary text-on-primary px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">electric_bolt</span>Electrical Dept. Admin
+          </span>
+
+<nav class="hidden md:flex items-center gap-6 ml-4"><a class="border-b-2 border-secondary text-secondary font-semibold pb-1 text-label-md font-label-md" href="#">Dashboard</a><a class="text-on-surface-variant hover:text-on-surface text-label-md font-label-md transition-colors pb-1" href="../reports/code.html">Reports</a><a class="text-on-surface-variant hover:text-on-surface text-label-md font-label-md transition-colors pb-1" href="../analytics/code.html">Analytics</a></nav></div>
+<!-- Center Nav Links -->
+
+<!-- Trailing Action Cluster -->
+<div class="flex items-center gap-3">
+
+
+
+<button class="p-1.5 text-on-surface-variant hover:text-on-surface rounded transition-colors" title="Notifications">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-on-surface rounded transition-colors" title="Account">
+<span class="material-symbols-outlined text-[20px]">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Canvas: fetched live from reports/code.html at runtime, same as
+     student_faculty/code.html, but rendered with the department_admin role
+     applied — so status dropdowns are editable and the department filter
+     is locked to this admin's department. -->
+<main id="feed-mount" class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 flex flex-col gap-6">
+<div class="flex items-center justify-center gap-2 py-24 text-on-surface-variant text-body-sm font-body-sm">
+<span class="material-symbols-outlined text-[20px] animate-spin">progress_activity</span>
+Loading reports…
+</div>
+</main>
+<!-- Responsive Sliding Overlay for Mobile Report Drawer -->
+
+<!-- Minimal Footer (Shared Component: Footer) -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant mt-auto">
+<div class="flex flex-col sm:flex-row justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto gap-4">
+<div class="flex items-center gap-3">
+<span class="text-headline-sm font-headline-sm font-bold text-primary">UnivPulse</span>
+<span class="text-on-surface-variant text-body-sm font-body-sm">© 2025 UnivPulse • UCS503 Course Project</span>
+</div>
+<div class="flex items-center gap-6 text-body-sm font-body-sm">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Issue Guidelines</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">System Status</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Campus Safety</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+</div>
+</div>
+</footer>
+<!-- Shared helpers (upvoteToggle, applyRole, statusChanged) -->
+<script src="../assets/shared.js"></script>
+<!-- Pulls the feed/form/submission markup live from reports/code.html so
+     this page doesn't carry its own duplicate copy of it. -->
+<script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const mount = document.getElementById('feed-mount');
+      try {
+        const res = await fetch('../reports/reports.html');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const html = await res.text();
+        const sourceMain = new DOMParser().parseFromString(html, 'text/html').querySelector('main');
+        if (!sourceMain) throw new Error('No <main> found in reports/code.html');
+        sourceMain.id = 'feed-mount';
+        mount.replaceWith(sourceMain);
+
+        // This page is the Department Admin entry point, so it always
+        // applies the department_admin role scoped to Electrical — it
+        // doesn't read the shared dev-role-switcher value like the generic
+        // dashboard does. This also hides every other department's cards,
+        // not just the edit control, so this admin genuinely can't see or
+        // change reports outside their department.
+        // TODO: replace 'electrical' with this admin's real department
+        // from your auth/session once that's wired up.
+        applyRole('department_admin', 'electrical');
+        restoreLocalOverrides();
+      } catch (err) {
+        console.error('Failed to load reports fragment:', err);
+        mount.innerHTML = '<div class="text-center py-24">' +
+          '<p class="text-body-sm font-body-sm text-error mb-2">Couldn\'t load reports right now.</p>' +
+          '<a class="text-label-md font-label-md text-secondary hover:underline" href="../reports/code.html">Open Reports directly →</a>' +
+          '</div>';
+      }
+    });
+  </script>
+</body></html>

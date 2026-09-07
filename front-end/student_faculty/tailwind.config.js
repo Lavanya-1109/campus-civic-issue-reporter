@@ -1,0 +1,73 @@
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "surface-container-lowest": "#ffffff",
+        "on-tertiary": "#ffffff",
+        outline: "#75777d",
+        "on-surface": "#131b2e",
+        "secondary-container": "#2170e4",
+        "on-error": "#ffffff",
+        "surface-container": "#eaedff",
+        "primary-container": "#1e293b",
+        "error-container": "#ffdad6",
+        background: "#faf8ff",
+        "tertiary-fixed-dim": "#c0c1ff",
+        "on-tertiary-fixed": "#07006c",
+        "on-primary": "#ffffff",
+        "on-secondary-fixed-variant": "#004395",
+        "inverse-surface": "#283044",
+        "on-secondary-fixed": "#001a42",
+        "on-primary-container": "#8590a6",
+        "secondary-fixed-dim": "#adc6ff",
+        "on-secondary": "#ffffff",
+        "on-primary-fixed": "#111c2d",
+        tertiary: "#040057",
+        "on-background": "#131b2e",
+        "secondary-fixed": "#d8e2ff",
+        "on-primary-fixed-variant": "#3c475a",
+        "surface-dim": "#d2d9f4",
+        "on-error-container": "#93000a",
+        "primary-fixed": "#d8e3fb",
+        "surface-tint": "#545f73",
+        "tertiary-fixed": "#e1e0ff",
+        secondary: "#0058be",
+        "surface-container-low": "#f2f3ff",
+        "primary-fixed-dim": "#bcc7de",
+        "tertiary-container": "#0d0093",
+        "surface-container-high": "#e2e7ff",
+        "outline-variant": "#c5c6cd",
+        surface: "#faf8ff",
+        "on-tertiary-container": "#7f82ff",
+        "on-secondary-container": "#fefcff",
+        "on-surface-variant": "#45474c",
+        "surface-container-highest": "#dae2fd",
+        "surface-variant": "#dae2fd",
+        "on-tertiary-fixed-variant": "#2f2ebe",
+        "inverse-primary": "#bcc7de",
+        "inverse-on-surface": "#eef0ff",
+        primary: "#091426",
+        error: "#ba1a1a",
+        "surface-bright": "#faf8ff"
+      },
+      borderRadius: { DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem" },
+      fontFamily: {
+        "label-sm": ["Public Sans"], "title-md": ["Manrope"], "display-lg": ["Manrope"],
+        "code-sm": ["Public Sans"], "label-md": ["Public Sans"], "headline-sm": ["Manrope"],
+        "body-md": ["Public Sans"], "display-lg-mobile": ["Manrope"], "headline-lg": ["Manrope"],
+        "body-sm": ["Public Sans"], "body-lg": ["Public Sans"], "headline-md": ["Manrope"],
+        "headline-lg-mobile": ["Manrope"]
+      },
+      fontSize: {
+        "label-sm": ["0.6875rem", { lineHeight: "1rem", letterSpacing: "0.04em", fontWeight: "600" }],
+        "title-md": ["1rem", { lineHeight: "1.5rem", letterSpacing: "-0.005em", fontWeight: "600" }],
+        "label-md": ["0.8125rem", { lineHeight: "1.125rem", letterSpacing: "0.02em", fontWeight: "600" }],
+        "headline-sm": ["1.125rem", { lineHeight: "1.625rem", letterSpacing: "-0.01em", fontWeight: "600" }],
+        "body-md": ["0.9375rem", { lineHeight: "1.5rem", letterSpacing: "0", fontWeight: "400" }],
+        "body-sm": ["0.8125rem", { lineHeight: "1.25rem", letterSpacing: "0.005em", fontWeight: "400" }],
+        "headline-md": ["1.5rem", { lineHeight: "2rem", letterSpacing: "-0.015em", fontWeight: "600" }]
+      }
+    }
+  }
+};
