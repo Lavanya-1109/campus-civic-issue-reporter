@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!sourceMain) throw new Error('No <main> found in reports/reports.html');
     sourceMain.id = 'feed-mount';
     mount.replaceWith(sourceMain);
-    applyRole('student');
+    applyRole('department_admin', 'electrical');
     restoreLocalOverrides();
   } catch (error) {
     console.error('Failed to load reports fragment:', error);

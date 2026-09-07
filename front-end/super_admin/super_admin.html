@@ -7,6 +7,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="../student_faculty/student_faculty.css" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
     tailwind.config = {
@@ -143,7 +144,7 @@
 <span class="material-symbols-outlined text-[14px]">shield_person</span>Super Admin — All Depts.
           </span>
 
-<nav class="hidden md:flex items-center gap-6 ml-4"><a class="border-b-2 border-secondary text-secondary font-semibold pb-1 text-label-md font-label-md" href="#">Dashboard</a><a class="text-on-surface-variant hover:text-on-surface text-label-md font-label-md transition-colors pb-1" href="../reports/code.html">Reports</a><a class="text-on-surface-variant hover:text-on-surface text-label-md font-label-md transition-colors pb-1" href="../analytics/code.html">Analytics</a></nav></div>
+<nav class="hidden md:flex items-center gap-6 ml-4"><a class="border-b-2 border-secondary text-secondary font-semibold pb-1 text-label-md font-label-md" href="#">Dashboard</a><a class="text-on-surface-variant hover:text-on-surface text-label-md font-label-md transition-colors pb-1" href="../reports/reports.html">Reports</a><a class="text-on-surface-variant hover:text-on-surface text-label-md font-label-md transition-colors pb-1" href="#analytics">Analytics</a></nav></div>
 <!-- Center Nav Links -->
 
 <!-- Trailing Action Cluster -->
@@ -189,33 +190,5 @@ Loading reports…
 </footer>
 <!-- Shared helpers (upvoteToggle, applyRole, statusChanged) -->
 <script src="../assets/shared.js"></script>
-<!-- Pulls the feed/form/submission markup live from reports/code.html so
-     this page doesn't carry its own duplicate copy of it. -->
-<script>
-    document.addEventListener('DOMContentLoaded', async () => {
-      const mount = document.getElementById('feed-mount');
-      try {
-        const res = await fetch('../reports/reports.html');
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        const html = await res.text();
-        const sourceMain = new DOMParser().parseFromString(html, 'text/html').querySelector('main');
-        if (!sourceMain) throw new Error('No <main> found in reports/code.html');
-        sourceMain.id = 'feed-mount';
-        mount.replaceWith(sourceMain);
-
-        // This page is the Super Admin entry point, so it always applies
-        // the super_admin role — it doesn't read the shared dev-role-switcher
-        // value like the generic dashboard does.
-        // TODO: replace with the real role from your auth/session.
-        applyRole('super_admin');
-        restoreLocalOverrides();
-      } catch (err) {
-        console.error('Failed to load reports fragment:', err);
-        mount.innerHTML = '<div class="text-center py-24">' +
-          '<p class="text-body-sm font-body-sm text-error mb-2">Couldn\'t load reports right now.</p>' +
-          '<a class="text-label-md font-label-md text-secondary hover:underline" href="../reports/code.html">Open Reports directly →</a>' +
-          '</div>';
-      }
-    });
-  </script>
+<script src="super_admin.js"></script>
 </body></html>

@@ -7,6 +7,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="../student_faculty/student_faculty.css" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
     tailwind.config = {
@@ -140,7 +141,7 @@
         </a>
 <span class="text-label-sm font-label-sm text-outline px-2 py-0.5 border border-outline-variant rounded bg-surface-container-low">UCS503 Course Project</span>
 
-<nav class="hidden md:flex items-center gap-6 ml-4"><a class="text-on-surface-variant hover:text-on-surface text-label-md font-label-md transition-colors pb-1" href="../student_faculty/code.html">Dashboard</a><a class="border-b-2 border-secondary text-secondary font-semibold pb-1 text-label-md font-label-md" href="#">Reports</a><a class="text-on-surface-variant hover:text-on-surface text-label-md font-label-md transition-colors pb-1" href="../analytics/code.html">Analytics</a></nav></div>
+<nav class="hidden md:flex items-center gap-6 ml-4"><a class="text-on-surface-variant hover:text-on-surface text-label-md font-label-md transition-colors pb-1" href="../student_faculty/student_faculty.html">Dashboard</a><a class="border-b-2 border-secondary text-secondary font-semibold pb-1 text-label-md font-label-md" href="#">Reports</a><a class="text-on-surface-variant hover:text-on-surface text-label-md font-label-md transition-colors pb-1" href="#analytics">Analytics</a></nav></div>
 <!-- Center Nav Links -->
 
 <!-- Trailing Action Cluster -->
@@ -621,28 +622,5 @@ Manage Status <span class="material-symbols-outlined text-[16px]">arrow_forward<
 </footer>
 <!-- Shared helpers (upvoteToggle, applyRole, statusChanged) -->
 <script src="../assets/shared.js"></script>
-<!-- Page-specific: wires up the dev-only role/department switchers -->
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const roleSwitcher = document.getElementById('dev-role-switcher');
-      const deptSwitcher = document.getElementById('dev-department-switcher');
-      const savedRole = localStorage.getItem('univpulse_dev_role') || 'student';
-      const savedDept = localStorage.getItem('univpulse_dev_department') || 'electrical';
-
-      function sync(role) {
-        deptSwitcher.classList.toggle('hidden', role !== 'department_admin');
-        applyRole(role, deptSwitcher.value);
-        restoreLocalOverrides();
-      }
-
-      roleSwitcher.value = savedRole;
-      deptSwitcher.value = savedDept;
-      sync(savedRole);
-
-      roleSwitcher.addEventListener('change', (e) => sync(e.target.value));
-      deptSwitcher.addEventListener('change', () => sync(roleSwitcher.value));
-    });
-  </script>
-
-
+<script src="reports.js"></script>
 </body></html>
