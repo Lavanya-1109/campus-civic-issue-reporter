@@ -1,0 +1,23 @@
+version: "3.9"
+
+# Local development database for Civic Issue Reporter.
+# Run:  docker compose up -d
+# Then: docker exec -i civic_issue_db psql -U civic_user -d civic_issue_reporter < sql/schema.sql
+#       docker exec -i civic_issue_db psql -U civic_user -d civic_issue_reporter < sql/seed.sql
+
+services:
+  db:
+    image: postgres:16
+    container_name: civic_issue_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: civic_user
+      POSTGRES_PASSWORD: civic_pass
+      POSTGRES_DB: civic_issue_reporter
+    ports:
+      - "5432:5432"
+    volumes:
+      - civic_issue_pgdata:/var/lib/postgresql/data
+
+volumes:
+  civic_issue_pgdata:
