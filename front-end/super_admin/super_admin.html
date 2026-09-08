@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en" style=""><head>
+<!doctype html><html lang="en"><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>UnivPulse — Super Admin</title>
@@ -8,126 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <link href="../student_faculty/student_faculty.css" rel="stylesheet">
+<link href="super_admin_page.css" rel="stylesheet">
+<script src="../assets/tailwind.config.js"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          "colors": {
-            "surface-container-lowest": "#ffffff",
-            "on-tertiary": "#ffffff",
-            "outline": "#75777d",
-            "on-surface": "#131b2e",
-            "secondary-container": "#2170e4",
-            "on-error": "#ffffff",
-            "surface-container": "#eaedff",
-            "primary-container": "#1e293b",
-            "error-container": "#ffdad6",
-            "background": "#faf8ff",
-            "tertiary-fixed-dim": "#c0c1ff",
-            "on-tertiary-fixed": "#07006c",
-            "on-primary": "#ffffff",
-            "on-secondary-fixed-variant": "#004395",
-            "inverse-surface": "#283044",
-            "on-secondary-fixed": "#001a42",
-            "on-primary-container": "#8590a6",
-            "secondary-fixed-dim": "#adc6ff",
-            "on-secondary": "#ffffff",
-            "on-primary-fixed": "#111c2d",
-            "tertiary": "#040057",
-            "on-background": "#131b2e",
-            "secondary-fixed": "#d8e2ff",
-            "on-primary-fixed-variant": "#3c475a",
-            "surface-dim": "#d2d9f4",
-            "on-error-container": "#93000a",
-            "primary-fixed": "#d8e3fb",
-            "surface-tint": "#545f73",
-            "tertiary-fixed": "#e1e0ff",
-            "secondary": "#0058be",
-            "surface-container-low": "#f2f3ff",
-            "primary-fixed-dim": "#bcc7de",
-            "tertiary-container": "#0d0093",
-            "surface-container-high": "#e2e7ff",
-            "outline-variant": "#c5c6cd",
-            "surface": "#faf8ff",
-            "on-tertiary-container": "#7f82ff",
-            "on-secondary-container": "#fefcff",
-            "on-surface-variant": "#45474c",
-            "surface-container-highest": "#dae2fd",
-            "surface-variant": "#dae2fd",
-            "on-tertiary-fixed-variant": "#2f2ebe",
-            "inverse-primary": "#bcc7de",
-            "inverse-on-surface": "#eef0ff",
-            "primary": "#091426",
-            "error": "#ba1a1a",
-            "surface-bright": "#faf8ff"
-          },
-          "borderRadius": {
-            "DEFAULT": "0.125rem",
-            "lg": "0.25rem",
-            "xl": "0.5rem",
-            "full": "0.75rem"
-          },
-          "spacing": {
-            "space-sm": "0.5rem",
-            "space-3xl": "4rem",
-            "space-base": "1rem",
-            "layout-gutter-md": "1rem",
-            "space-2xs": "0.125rem",
-            "space-lg": "1.5rem",
-            "layout-gutter-sm": "0.75rem",
-            "layout-margin-tablet": "1.5rem",
-            "layout-gutter-lg": "1.5rem",
-            "space-md": "0.75rem",
-            "space-xl": "2rem",
-            "space-xs": "0.25rem",
-            "space-2xl": "3rem",
-            "layout-margin-desktop": "2rem",
-            "layout-margin-mobile": "1rem"
-          },
-          "fontFamily": {
-            "label-sm": ["Public Sans"],
-            "title-md": ["Manrope"],
-            "display-lg": ["Manrope"],
-            "code-sm": ["Public Sans"],
-            "label-md": ["Public Sans"],
-            "headline-sm": ["Manrope"],
-            "body-md": ["Public Sans"],
-            "display-lg-mobile": ["Manrope"],
-            "headline-lg": ["Manrope"],
-            "body-sm": ["Public Sans"],
-            "body-lg": ["Public Sans"],
-            "headline-md": ["Manrope"],
-            "headline-lg-mobile": ["Manrope"]
-          },
-          "fontSize": {
-            "label-sm": ["0.6875rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "600" }],
-            "title-md": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.005em", "fontWeight": "600" }],
-            "display-lg": ["3rem", { "lineHeight": "3.5rem", "letterSpacing": "-0.025em", "fontWeight": "700" }],
-            "code-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.05em", "fontWeight": "500" }],
-            "label-md": ["0.8125rem", { "lineHeight": "1.125rem", "letterSpacing": "0.02em", "fontWeight": "600" }],
-            "headline-sm": ["1.125rem", { "lineHeight": "1.625rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
-            "body-md": ["0.9375rem", { "lineHeight": "1.5rem", "letterSpacing": "0", "fontWeight": "400" }],
-            "display-lg-mobile": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-            "headline-lg": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "600" }],
-            "body-sm": ["0.8125rem", { "lineHeight": "1.25rem", "letterSpacing": "0.005em", "fontWeight": "400" }],
-            "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "letterSpacing": "0", "fontWeight": "400" }],
-            "headline-md": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
-            "headline-lg-mobile": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" }]
-          }
-        }
-      }
-    }
-  </script>
-<style>
-    .material-symbols-outlined {
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
-      display: inline-block;
-      vertical-align: middle;
-      line-height: 1;
-    }
-  </style>
 </head>
 <body class="bg-surface text-on-surface antialiased selection:bg-secondary selection:text-on-secondary min-h-screen flex flex-col font-body-md">
 <!-- Top Navigation Header (Shared Component: TopNavBar) -->
@@ -145,13 +28,8 @@
           </span>
 
 <nav class="hidden md:flex items-center gap-6 ml-4"><a class="border-b-2 border-secondary text-secondary font-semibold pb-1 text-label-md font-label-md" href="#">Dashboard</a><a class="text-on-surface-variant hover:text-on-surface text-label-md font-label-md transition-colors pb-1" href="../reports/reports.html">Reports</a><a class="text-on-surface-variant hover:text-on-surface text-label-md font-label-md transition-colors pb-1" href="#analytics">Analytics</a></nav></div>
-<!-- Center Nav Links -->
-
 <!-- Trailing Action Cluster -->
 <div class="flex items-center gap-3">
-
-
-
 <button class="p-1.5 text-on-surface-variant hover:text-on-surface rounded transition-colors" title="Notifications">
 <span class="material-symbols-outlined text-[20px]">notifications</span>
 </button>
@@ -161,18 +39,24 @@
 </div>
 </div>
 </header>
-<!-- Main Canvas: fetched live from reports/code.html at runtime, same as
-     student_faculty/code.html, but rendered with the super_admin role
-     applied — status dropdowns are editable across every department, and
-     the department filter is unlocked (shows all departments). -->
-<main id="feed-mount" class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 flex flex-col gap-6">
-<div class="flex items-center justify-center gap-2 py-24 text-on-surface-variant text-body-sm font-body-sm">
-<span class="material-symbols-outlined text-[20px] animate-spin">progress_activity</span>
-Loading reports…
+<!-- Main Canvas -->
+<main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 flex flex-col gap-6">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-outline-variant pb-4">
+<div class="flex items-center gap-2">
+<select id="department-filter" class="bg-surface-container-lowest border border-outline-variant rounded px-3 py-1.5 text-body-sm font-body-sm text-on-surface focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors cursor-pointer pr-8">
+<option value="">All Departments</option>
+</select>
 </div>
+<div class="flex items-center gap-3 w-full md:w-auto">
+<div class="relative flex-1 md:w-72">
+<span class="material-symbols-outlined absolute left-2.5 top-2.5 text-[18px] text-outline">search</span>
+<input id="search-input" class="w-full bg-surface-container-lowest border border-outline-variant rounded pl-8 pr-3 py-1.5 text-body-sm font-body-sm text-on-surface placeholder:text-outline focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors" placeholder="Search tickets, rooms, reporters..." type="text">
+</div>
+</div>
+</div>
+<div id="issues-feed-list" class="flex flex-col gap-3.5"></div>
+<div id="issues-feed-empty" class="hidden text-center py-16 text-on-surface-variant text-body-sm font-body-sm">No reports match right now.</div>
 </main>
-<!-- Responsive Sliding Overlay for Mobile Report Drawer -->
-
 <!-- Minimal Footer (Shared Component: Footer) -->
 <footer class="bg-surface-container-lowest border-t border-outline-variant mt-auto">
 <div class="flex flex-col sm:flex-row justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto gap-4">
@@ -188,7 +72,7 @@ Loading reports…
 </div>
 </div>
 </footer>
-<!-- Shared helpers (upvoteToggle, applyRole, statusChanged) -->
+<script src="../assets/api.js"></script>
 <script src="../assets/shared.js"></script>
 <script src="super_admin.js"></script>
 </body></html>

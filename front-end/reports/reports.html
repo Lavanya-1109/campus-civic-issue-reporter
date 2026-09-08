@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en" style=""><head>
+<!doctype html><html lang="en"><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>UnivPulse - Reports</title>
@@ -8,126 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <link href="../student_faculty/student_faculty.css" rel="stylesheet">
+<link href="reports.css" rel="stylesheet">
+<script src="../assets/tailwind.config.js"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          "colors": {
-            "surface-container-lowest": "#ffffff",
-            "on-tertiary": "#ffffff",
-            "outline": "#75777d",
-            "on-surface": "#131b2e",
-            "secondary-container": "#2170e4",
-            "on-error": "#ffffff",
-            "surface-container": "#eaedff",
-            "primary-container": "#1e293b",
-            "error-container": "#ffdad6",
-            "background": "#faf8ff",
-            "tertiary-fixed-dim": "#c0c1ff",
-            "on-tertiary-fixed": "#07006c",
-            "on-primary": "#ffffff",
-            "on-secondary-fixed-variant": "#004395",
-            "inverse-surface": "#283044",
-            "on-secondary-fixed": "#001a42",
-            "on-primary-container": "#8590a6",
-            "secondary-fixed-dim": "#adc6ff",
-            "on-secondary": "#ffffff",
-            "on-primary-fixed": "#111c2d",
-            "tertiary": "#040057",
-            "on-background": "#131b2e",
-            "secondary-fixed": "#d8e2ff",
-            "on-primary-fixed-variant": "#3c475a",
-            "surface-dim": "#d2d9f4",
-            "on-error-container": "#93000a",
-            "primary-fixed": "#d8e3fb",
-            "surface-tint": "#545f73",
-            "tertiary-fixed": "#e1e0ff",
-            "secondary": "#0058be",
-            "surface-container-low": "#f2f3ff",
-            "primary-fixed-dim": "#bcc7de",
-            "tertiary-container": "#0d0093",
-            "surface-container-high": "#e2e7ff",
-            "outline-variant": "#c5c6cd",
-            "surface": "#faf8ff",
-            "on-tertiary-container": "#7f82ff",
-            "on-secondary-container": "#fefcff",
-            "on-surface-variant": "#45474c",
-            "surface-container-highest": "#dae2fd",
-            "surface-variant": "#dae2fd",
-            "on-tertiary-fixed-variant": "#2f2ebe",
-            "inverse-primary": "#bcc7de",
-            "inverse-on-surface": "#eef0ff",
-            "primary": "#091426",
-            "error": "#ba1a1a",
-            "surface-bright": "#faf8ff"
-          },
-          "borderRadius": {
-            "DEFAULT": "0.125rem",
-            "lg": "0.25rem",
-            "xl": "0.5rem",
-            "full": "0.75rem"
-          },
-          "spacing": {
-            "space-sm": "0.5rem",
-            "space-3xl": "4rem",
-            "space-base": "1rem",
-            "layout-gutter-md": "1rem",
-            "space-2xs": "0.125rem",
-            "space-lg": "1.5rem",
-            "layout-gutter-sm": "0.75rem",
-            "layout-margin-tablet": "1.5rem",
-            "layout-gutter-lg": "1.5rem",
-            "space-md": "0.75rem",
-            "space-xl": "2rem",
-            "space-xs": "0.25rem",
-            "space-2xl": "3rem",
-            "layout-margin-desktop": "2rem",
-            "layout-margin-mobile": "1rem"
-          },
-          "fontFamily": {
-            "label-sm": ["Public Sans"],
-            "title-md": ["Manrope"],
-            "display-lg": ["Manrope"],
-            "code-sm": ["Public Sans"],
-            "label-md": ["Public Sans"],
-            "headline-sm": ["Manrope"],
-            "body-md": ["Public Sans"],
-            "display-lg-mobile": ["Manrope"],
-            "headline-lg": ["Manrope"],
-            "body-sm": ["Public Sans"],
-            "body-lg": ["Public Sans"],
-            "headline-md": ["Manrope"],
-            "headline-lg-mobile": ["Manrope"]
-          },
-          "fontSize": {
-            "label-sm": ["0.6875rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "600" }],
-            "title-md": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.005em", "fontWeight": "600" }],
-            "display-lg": ["3rem", { "lineHeight": "3.5rem", "letterSpacing": "-0.025em", "fontWeight": "700" }],
-            "code-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.05em", "fontWeight": "500" }],
-            "label-md": ["0.8125rem", { "lineHeight": "1.125rem", "letterSpacing": "0.02em", "fontWeight": "600" }],
-            "headline-sm": ["1.125rem", { "lineHeight": "1.625rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
-            "body-md": ["0.9375rem", { "lineHeight": "1.5rem", "letterSpacing": "0", "fontWeight": "400" }],
-            "display-lg-mobile": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-            "headline-lg": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "600" }],
-            "body-sm": ["0.8125rem", { "lineHeight": "1.25rem", "letterSpacing": "0.005em", "fontWeight": "400" }],
-            "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "letterSpacing": "0", "fontWeight": "400" }],
-            "headline-md": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
-            "headline-lg-mobile": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" }]
-          }
-        }
-      }
-    }
-  </script>
-<style>
-    .material-symbols-outlined {
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
-      display: inline-block;
-      vertical-align: middle;
-      line-height: 1;
-    }
-  </style>
 </head>
 <body class="bg-surface text-on-surface antialiased selection:bg-secondary selection:text-on-secondary min-h-screen flex flex-col font-body-md">
 <!-- Top Navigation Header (Shared Component: TopNavBar) -->
@@ -142,27 +25,8 @@
 <span class="text-label-sm font-label-sm text-outline px-2 py-0.5 border border-outline-variant rounded bg-surface-container-low">UCS503 Course Project</span>
 
 <nav class="hidden md:flex items-center gap-6 ml-4"><a class="text-on-surface-variant hover:text-on-surface text-label-md font-label-md transition-colors pb-1" href="../student_faculty/student_faculty.html">Dashboard</a><a class="border-b-2 border-secondary text-secondary font-semibold pb-1 text-label-md font-label-md" href="#">Reports</a><a class="text-on-surface-variant hover:text-on-surface text-label-md font-label-md transition-colors pb-1" href="#analytics">Analytics</a></nav></div>
-<!-- Center Nav Links -->
-
 <!-- Trailing Action Cluster -->
 <div class="flex items-center gap-3">
-<!-- TEMP DEV-ONLY ROLE SWITCHER — remove once real auth/session is wired up -->
-<div class="flex items-center gap-1.5 text-label-sm font-label-sm text-outline border border-dashed border-outline-variant rounded px-2 py-1" title="Dev only: simulates the logged-in role">
-<span class="material-symbols-outlined text-[14px]">bug_report</span>
-<select id="dev-role-switcher" class="bg-transparent text-on-surface font-semibold outline-none cursor-pointer">
-<option value="student">Student</option>
-<option value="faculty">Faculty</option>
-<option value="department_admin">Dept. Admin</option>
-<option value="super_admin">Super Admin</option>
-</select>
-<select id="dev-department-switcher" class="hidden bg-transparent text-on-surface font-semibold outline-none cursor-pointer border-l border-outline-variant pl-1.5 ml-0.5">
-<option value="electrical">Electrical</option>
-<option value="plumbing">Plumbing</option>
-<option value="hvac">HVAC</option>
-<option value="av-it">AV/IT</option>
-<option value="civil">Civil Works</option>
-</select>
-</div>
 <button class="p-1.5 text-on-surface-variant hover:text-on-surface rounded transition-colors" title="Notifications">
 <span class="material-symbols-outlined text-[20px]">notifications</span>
 </button>
@@ -174,291 +38,40 @@
 </header>
 <!-- Main Canvas -->
 <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 flex flex-col gap-6">
-<!-- Campus Safety Active Alert Banner -->
-
-<!-- Controls Row: Filter Pills & Search Input -->
+<!-- Controls Row: Department Filter & Search Input -->
 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-outline-variant pb-4">
-<!-- Category Pills -->
-<div class="flex items-center gap-2"><button type="button" class="bg-primary text-on-primary px-3 py-1.5 rounded text-body-sm font-label-md transition-colors shadow-sm">All Issues</button><div class="relative" data-role-visible="student,faculty,super_admin"><select class="bg-surface-container-lowest border border-outline-variant rounded px-3 py-1.5 text-body-sm font-body-sm text-on-surface focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors cursor-pointer pr-8"><option value="" selected="">Department</option><option value="electrical">Electrical</option><option value="plumbing">Plumbing</option><option value="hvac">HVAC</option><option value="av-it">AV/IT</option><option value="civil">Civil Works</option></select></div><span class="hidden items-center gap-1.5 px-3 py-1.5 rounded text-body-sm font-label-md bg-surface-container-low border border-outline-variant text-on-surface-variant" data-role-visible="department_admin"><span class="material-symbols-outlined text-[16px]">lock</span>Electrical Dept. only</span></div>
-<!-- Search Input & Quick Sort -->
+<div class="flex items-center gap-2">
+<select id="department-filter" class="bg-surface-container-lowest border border-outline-variant rounded px-3 py-1.5 text-body-sm font-body-sm text-on-surface focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors cursor-pointer pr-8">
+<option value="">All Departments</option>
+</select>
+<span id="department-scope-label" class="hidden items-center gap-1.5 px-3 py-1.5 rounded text-body-sm font-label-md bg-surface-container-low border border-outline-variant text-on-surface-variant"></span>
+</div>
+<!-- Search Input -->
 <div class="flex items-center gap-3 w-full md:w-auto">
 <div class="relative flex-1 md:w-72">
 <span class="material-symbols-outlined absolute left-2.5 top-2.5 text-[18px] text-outline">search</span>
-<input class="w-full bg-surface-container-lowest border border-outline-variant rounded pl-8 pr-3 py-1.5 text-body-sm font-body-sm text-on-surface placeholder:text-outline focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors" placeholder="Search tickets, rooms, reporters..." type="text">
+<input id="search-input" class="w-full bg-surface-container-lowest border border-outline-variant rounded pl-8 pr-3 py-1.5 text-body-sm font-body-sm text-on-surface placeholder:text-outline focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors" placeholder="Search tickets, rooms, reporters..." type="text">
 </div>
 <div class="flex items-center gap-1 border border-outline-variant rounded px-2.5 py-1.5 bg-surface-container-lowest text-label-sm font-label-sm text-on-surface-variant">
 <span class="text-outline">Sort:</span>
 <span class="font-semibold text-on-surface">Most Upvoted</span>
-<span class="material-symbols-outlined text-[16px]">arrow_drop_down</span>
 </div>
 </div>
 </div>
-<!-- Main Workspace Layout: Dual Pane (Feed + Pinned Submission Panel) -->
+<!-- Main Workspace Layout: Dual Pane (Feed + Submission Panel) -->
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-<!-- Primary Feed: Cards Stream (8 Cols on Desktop) -->
+<!-- Primary Feed: Cards Stream -->
 <div class="lg:col-span-7 xl:col-span-8 flex flex-col gap-3.5">
 <div class="flex items-center justify-between px-1">
 <h2 class="text-headline-sm font-headline-sm text-primary tracking-tight">Active Incident Feed</h2>
-<span class="text-label-sm font-label-sm text-outline">Showing real-time campus telemetry</span>
+<span class="text-label-sm font-label-sm text-outline">Live from the backend</span>
 </div>
-<!-- Issue Card 1: Critical / High Engagement -->
-<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 shadow-sm hover:border-outline transition-all duration-150" data-department="electrical" data-report-id="UP-8841" data-description="Audible buzzing sound and intermittent sparks sighted behind the podium's primary distribution panel during the morning lecture. Requires immediate check before the next class session.">
-<div class="flex flex-col sm:flex-row items-start gap-4">
-<!-- Thumbnail -->
-<div class="w-full sm:w-28 h-28 shrink-0 rounded overflow-hidden bg-surface-container border border-outline-variant relative">
-<img class="w-full h-full object-cover" data-alt="A clean campus lecture hall ceiling fixture showing a detached fluorescent ballast hanging securely by safety wires. Crisp architectural overhead lighting illuminates the modern acoustic panel ceiling in high contrast institutional realism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWDYtEvlWCfJbTuaOH_3m3CUlMHmn97KizcbhXLD4Kk_YOBgSF6nEo7CWeKoB3iASDU50PD_VqSq-085NmokY7OG2khD9lV_hM3BwSLwDbte48ixI9Am2aaxJJbuSJ52lN9nRRGJU4aauvMVxi2ZheJqYyQK1ce8zWnSW-GxIjL4K9--qlChcSgvWUFPdMIM4bsOxoZfdH2WWkrRgjJp5b0oGJ_NRGxWDo8KM1xry2K6nZ-tahMlJ53w">
-<span class="absolute bottom-1 left-1 bg-primary/80 backdrop-blur-sm text-[10px] text-on-primary font-mono px-1 py-0.5 rounded">PHOTO</span>
+<div id="issues-feed-list" class="flex flex-col gap-3.5"></div>
+<div id="issues-feed-empty" class="hidden text-center py-16 text-on-surface-variant text-body-sm font-body-sm">No reports match right now.</div>
 </div>
-<!-- Card Content Body -->
-<div class="flex-1 min-w-0 flex flex-col justify-between">
-<div>
-<!-- Status & Category Row -->
-<div class="flex items-center justify-between gap-2 mb-1.5 flex-wrap">
-<div class="flex items-center gap-2">
-<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-[#FEF2F2] text-[#991B1B]" data-role-visible="student,faculty" data-status-badge>
-<span class="w-1.5 h-1.5 rounded-full bg-[#EF4444]" data-status-dot></span>
-<span data-status-label>Pending</span>
-</span>
-<select class="hidden text-label-sm font-label-sm font-semibold py-0.5 px-2 rounded-full border border-[#EF4444]/40 bg-[#FEF2F2] text-[#991B1B] cursor-pointer focus:ring-1 focus:ring-secondary" data-role-visible="department_admin,super_admin" data-status-select onchange="statusChanged(this)">
-<option selected="" value="Pending">● Pending</option>
-<option value="In Progress">● In Progress</option>
-<option value="Resolved">● Resolved</option>
-</select>
-<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-surface-container text-on-surface-variant font-mono">
-                      Electrical
-                    </span>
-<span class="text-label-sm font-label-sm text-outline">#UP-8841</span>
-</div>
-<span class="text-label-sm font-label-sm text-outline flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px]">schedule</span> 18m ago
-                  </span>
-</div>
-<!-- Title & Location -->
-<h3 class="text-title-md font-title-md text-primary tracking-tight hover:text-secondary cursor-pointer transition-colors">
-                  Overhead light fixture ballast loose and flickering continuously
-                </h3>
-<div class="flex items-center gap-2 mt-1 text-body-sm font-body-sm text-on-surface-variant">
-<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>
-<span class="font-semibold text-on-surface">Lecture Hall 3B</span>
-<span class="text-outline">•</span>
-<span class="">Academic Block North</span>
-</div>
-</div>
-<!-- Reporter & Action Footer -->
-<div class="flex items-center justify-between border-t border-outline-variant/60 pt-2.5 mt-3">
-<div class="flex items-center gap-2 text-label-sm font-label-sm text-outline">
-<span class="w-5 h-5 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-[10px]">AK</span>
-<span class="">Reported by <strong class="text-on-surface font-medium">Aarav K. (CS '26)</strong></span>
-</div>
-<!-- Upvote Action Button -->
-<button class="flex items-center gap-1.5 px-2.5 py-1 rounded border border-outline-variant bg-surface hover:bg-surface-container-low text-on-surface transition-all active:scale-[0.98]" onclick="upvoteToggle(this)">
-<span class="material-symbols-outlined text-[16px] text-secondary">thumb_up</span>
-<span class="text-label-sm font-label-sm font-bold vote-count">38</span>
-<span class="text-label-sm font-label-sm text-outline hidden sm:inline">Endorse</span>
-</button>
-</div>
-<!-- Admin-only: opens the shared status/resolution-note panel in the
-     right-hand column, populated with this report's details. -->
-<div class="hidden border-t border-outline-variant/60 pt-2.5 mt-2.5" data-role-visible="department_admin,super_admin">
-<button type="button" class="flex items-center gap-1 text-label-sm font-label-sm text-secondary hover:underline" onclick="selectReportForReview(this)">
-Manage Status <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</button>
-</div>
-</div>
-</div>
-</article>
-<!-- Issue Card 2: In Progress -->
-<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 shadow-sm hover:border-outline transition-all duration-150" data-department="plumbing" data-report-id="UP-8839" data-description="Water pools around the fountain basin whenever it's used; drain appears fully clogged. Minor slip hazard forming near the corridor entrance.">
-<div class="flex flex-col sm:flex-row items-start gap-4">
-<!-- Thumbnail -->
-<div class="w-full sm:w-28 h-28 shrink-0 rounded overflow-hidden bg-surface-container border border-outline-variant relative">
-<img class="w-full h-full object-cover" data-alt="Institutional dormitory corridor showing a clean commercial grade water cooler basin with a minor leak maintenance warning cone placed nearby under neutral indoor campus lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnh7K_TgsuzVNCB4-pqlK5jOXlEkfP7URA5OIu3twCK8Wo6r-FzheolW6RJFTeQ8CT6UQfAI-K6V7valgPn8BCctTJJlvWSXz6k-2J0wxcRGswDgKn0bIkJLpYfHkepmBGnCLGO2GBPjyKHFfnI2U2vQ26Yr5XgZ-uZzZ9RWjE4Xl_1mOWb--iIkpRmHK88eON1Q9dqqi7RHz55vgZwlw2s37PqmDrkqvTzGoujTAkk8CavpCEFVSM0Q">
-<span class="absolute bottom-1 left-1 bg-primary/80 backdrop-blur-sm text-[10px] text-on-primary font-mono px-1 py-0.5 rounded">PHOTO</span>
-</div>
-<!-- Card Content Body -->
-<div class="flex-1 min-w-0 flex flex-col justify-between">
-<div>
-<div class="flex items-center justify-between gap-2 mb-1.5 flex-wrap">
-<div class="flex items-center gap-2">
-<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-[#FFFBEB] text-[#92400E]" data-role-visible="student,faculty" data-status-badge>
-<span class="w-1.5 h-1.5 rounded-full bg-[#F59E0B]" data-status-dot></span>
-<span data-status-label>In Progress</span>
-</span>
-<select class="hidden text-label-sm font-label-sm font-semibold py-0.5 px-2 rounded-full border border-[#F59E0B]/40 bg-[#FFFBEB] text-[#92400E] cursor-pointer focus:ring-1 focus:ring-secondary" data-role-visible="department_admin,super_admin" data-status-select onchange="statusChanged(this)">
-<option value="Pending">● Pending</option>
-<option selected="" value="In Progress">● In Progress</option>
-<option value="Resolved">● Resolved</option>
-</select>
-<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-surface-container text-on-surface-variant font-mono">
-                      Plumbing
-                    </span>
-<span class="text-label-sm font-label-sm text-outline">#UP-8839</span>
-</div>
-<span class="text-label-sm font-label-sm text-outline flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px]">schedule</span> 1h 12m ago
-                  </span>
-</div>
-<h3 class="text-title-md font-title-md text-primary tracking-tight hover:text-secondary cursor-pointer transition-colors">
-                  Water fountain basin drain clogged on second floor residential wing
-                </h3>
-<div class="flex items-center gap-2 mt-1 text-body-sm font-body-sm text-on-surface-variant">
-<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>
-<span class="font-semibold text-on-surface">Hostel C</span>
-<span class="text-outline">•</span>
-<span class="">2nd Floor East Corridor</span>
-</div>
-</div>
-<div class="flex items-center justify-between border-t border-outline-variant/60 pt-2.5 mt-3">
-<div class="flex items-center gap-2 text-label-sm font-label-sm text-outline">
-<span class="w-5 h-5 rounded-full bg-surface-variant text-on-surface flex items-center justify-center font-bold text-[10px]">MS</span>
-<span class="">Reported by <strong class="text-on-surface font-medium">Dr. M. Sharma (Faculty)</strong></span>
-</div>
-<button class="flex items-center gap-1.5 px-2.5 py-1 rounded border border-outline-variant bg-surface hover:bg-surface-container-low text-on-surface transition-all active:scale-[0.98]" onclick="upvoteToggle(this)">
-<span class="material-symbols-outlined text-[16px] text-secondary">thumb_up</span>
-<span class="text-label-sm font-label-sm font-bold vote-count">24</span>
-<span class="text-label-sm font-label-sm text-outline hidden sm:inline">Endorse</span>
-</button>
-</div>
-<!-- Admin-only: opens the shared status/resolution-note panel in the
-     right-hand column, populated with this report's details. -->
-<div class="hidden border-t border-outline-variant/60 pt-2.5 mt-2.5" data-role-visible="department_admin,super_admin">
-<button type="button" class="flex items-center gap-1 text-label-sm font-label-sm text-secondary hover:underline" onclick="selectReportForReview(this)">
-Manage Status <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</button>
-</div>
-</div>
-</div>
-</article>
-<!-- Issue Card 3: AV / IT Equipment -->
-<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 shadow-sm hover:border-outline transition-all duration-150" data-department="av-it" data-report-id="UP-8834" data-description="Projector powers on but shows no HDMI signal from the podium laptop input. Tried a second cable with the same result — likely a port or receiver fault.">
-<div class="flex flex-col sm:flex-row items-start gap-4">
-<!-- Thumbnail -->
-<div class="w-full sm:w-28 h-28 shrink-0 rounded overflow-hidden bg-surface-container border border-outline-variant relative">
-<img class="w-full h-full object-cover" data-alt="Digital classroom smart podium projector system exhibiting an HDMI input synchronization error on a clean white presentation screen in an empty college seminar room." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV2dPhZCfDzjcD8O3DyYCtrZcqL6rZqNb7sP_w3dzQlkY6beg0F6ntbg-HPdueqT2uGjYZMMI9TDxp7jyGj7JUcrxR8iPwYH8Xqzx7JpchVaXff3nUNq90TuOXajMd2ABKRjaR5BnKxq6FqmxDer_VFjzlA68Qh8JzKOyuxTjQyVOLXcoHMtb79i_BzHnnuXV69ZupfItFNz_i5-19G2qimQQTnXtKE8F5R0F5_uhU2T5ojweNHAcFSA">
-<span class="absolute bottom-1 left-1 bg-primary/80 backdrop-blur-sm text-[10px] text-on-primary font-mono px-1 py-0.5 rounded">PHOTO</span>
-</div>
-<!-- Card Content Body -->
-<div class="flex-1 min-w-0 flex flex-col justify-between">
-<div>
-<div class="flex items-center justify-between gap-2 mb-1.5 flex-wrap">
-<div class="flex items-center gap-2">
-<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-[#EEF2FF] text-[#3730A3]" data-role-visible="student,faculty" data-status-badge>
-<span class="w-1.5 h-1.5 rounded-full bg-[#6366F1]" data-status-dot></span>
-<span data-status-label>Assigned</span>
-</span>
-<select class="hidden text-label-sm font-label-sm font-semibold py-0.5 px-2 rounded-full border border-[#6366F1]/40 bg-[#EEF2FF] text-[#3730A3] cursor-pointer focus:ring-1 focus:ring-secondary" data-role-visible="department_admin,super_admin" data-status-select onchange="statusChanged(this)">
-<option value="Pending">● Pending</option>
-<option selected="" value="Assigned">● Assigned</option>
-<option value="In Progress">● In Progress</option>
-<option value="Resolved">● Resolved</option>
-</select>
-<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-surface-container text-on-surface-variant font-mono">
-                      AV Equipment
-                    </span>
-<span class="text-label-sm font-label-sm text-outline">#UP-8834</span>
-</div>
-<span class="text-label-sm font-label-sm text-outline flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px]">schedule</span> 2h ago
-                  </span>
-</div>
-<h3 class="text-title-md font-title-md text-primary tracking-tight hover:text-secondary cursor-pointer transition-colors">
-                  Ceiling projector HDMI signal drop every 10 minutes during classes
-                </h3>
-<div class="flex items-center gap-2 mt-1 text-body-sm font-body-sm text-on-surface-variant">
-<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>
-<span class="font-semibold text-on-surface">Seminar Hall 1</span>
-<span class="text-outline">•</span>
-<span class="">Engineering Complex</span>
-</div>
-</div>
-<div class="flex items-center justify-between border-t border-outline-variant/60 pt-2.5 mt-3">
-<div class="flex items-center gap-2 text-label-sm font-label-sm text-outline">
-<span class="w-5 h-5 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-[10px]">RP</span>
-<span class="">Reported by <strong class="text-on-surface font-medium">Riya Patel (ECE '25)</strong></span>
-</div>
-<button class="flex items-center gap-1.5 px-2.5 py-1 rounded border border-outline-variant bg-surface hover:bg-surface-container-low text-on-surface transition-all active:scale-[0.98]" onclick="upvoteToggle(this)">
-<span class="material-symbols-outlined text-[16px] text-secondary">thumb_up</span>
-<span class="text-label-sm font-label-sm font-bold vote-count">19</span>
-<span class="text-label-sm font-label-sm text-outline hidden sm:inline">Endorse</span>
-</button>
-</div>
-<!-- Admin-only: opens the shared status/resolution-note panel in the
-     right-hand column, populated with this report's details. -->
-<div class="hidden border-t border-outline-variant/60 pt-2.5 mt-2.5" data-role-visible="department_admin,super_admin">
-<button type="button" class="flex items-center gap-1 text-label-sm font-label-sm text-secondary hover:underline" onclick="selectReportForReview(this)">
-Manage Status <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</button>
-</div>
-</div>
-</div>
-</article>
-<!-- Issue Card 4: Resolved State -->
-<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 shadow-sm hover:border-outline transition-all duration-150" data-department="hvac" data-report-id="UP-8812" data-description="Thermostat was blowing unconditioned air into the study hall for several days. Technician rebalanced the system and confirmed normal airflow on follow-up.">
-<div class="flex flex-col sm:flex-row items-start gap-4">
-<!-- Thumbnail -->
-<div class="w-full sm:w-28 h-28 shrink-0 rounded overflow-hidden bg-surface-container border border-outline-variant relative">
-<img class="w-full h-full object-cover" data-alt="Clean renovated university study lab ventilation grille freshly cleaned and balanced, showing clean lines and precision engineering within an architectural campus environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBu9-RWSJW9iBSgVKMrj2BaHY2g6_Txhd6ZxdoOhF_5k1V1mVo3NQzMmlI26BXUrhL0fFKqRED6MwYsh4NPbNA62LGBmrT2vztySe3q87zj4LHZVP7SBAVRs2x-3YGOhZrnyE0Ls-xAltudkUURS6h-EQ-ErYAbjtJPRGs6Pl5ICybO1eNnU_n-auqklcpWlOpRZoBz65oNnvhpVYgglNXIIC1ZGFQwCC1KyX_yPR_a9cszTxlf9XZQbg">
-<span class="absolute bottom-1 left-1 bg-primary/80 backdrop-blur-sm text-[10px] text-on-primary font-mono px-1 py-0.5 rounded">PHOTO</span>
-</div>
-<!-- Card Content Body -->
-<div class="flex-1 min-w-0 flex flex-col justify-between">
-<div>
-<div class="flex items-center justify-between gap-2 mb-1.5 flex-wrap">
-<div class="flex items-center gap-2">
-<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-[#ECFDF5] text-[#065F46]" data-role-visible="student,faculty" data-status-badge>
-<span class="w-1.5 h-1.5 rounded-full bg-[#10B981]" data-status-dot></span>
-<span data-status-label>Resolved</span>
-</span>
-<select class="hidden text-label-sm font-label-sm font-semibold py-0.5 px-2 rounded-full border border-[#10B981]/40 bg-[#ECFDF5] text-[#065F46] cursor-pointer focus:ring-1 focus:ring-secondary" data-role-visible="department_admin,super_admin" data-status-select onchange="statusChanged(this)">
-<option value="Pending">● Pending</option>
-<option value="In Progress">● In Progress</option>
-<option selected="" value="Resolved">● Resolved</option>
-</select>
-<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-surface-container text-on-surface-variant font-mono">
-                      HVAC
-                    </span>
-<span class="text-label-sm font-label-sm text-outline">#UP-8812</span>
-</div>
-<span class="text-label-sm font-label-sm text-outline flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px]">schedule</span> 5h ago
-                  </span>
-</div>
-<h3 class="text-title-md font-title-md text-primary tracking-tight hover:text-secondary cursor-pointer transition-colors">
-                  Central thermostat blowing unconditioned ambient air in quiet study hall
-                </h3>
-<div class="flex items-center gap-2 mt-1 text-body-sm font-body-sm text-on-surface-variant">
-<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>
-<span class="font-semibold text-on-surface">Library Ground Wing</span>
-<span class="text-outline">•</span>
-<span class="">Room G-14</span>
-</div>
-</div>
-<div class="flex items-center justify-between border-t border-outline-variant/60 pt-2.5 mt-3">
-<div class="flex items-center gap-2 text-label-sm font-label-sm text-outline">
-<span class="w-5 h-5 rounded-full bg-surface-variant text-on-surface flex items-center justify-center font-bold text-[10px]">TL</span>
-<span class="">Reported by <strong class="text-on-surface font-medium">T. Lawson (Library Admin)</strong></span>
-</div>
-<button class="flex items-center gap-1.5 px-2.5 py-1 rounded border border-outline-variant bg-surface hover:bg-surface-container-low text-on-surface transition-all active:scale-[0.98]" onclick="upvoteToggle(this)">
-<span class="material-symbols-outlined text-[16px] text-outline">thumb_up</span>
-<span class="text-label-sm font-label-sm font-bold vote-count">47</span>
-<span class="text-label-sm font-label-sm text-outline hidden sm:inline">Endorsed</span>
-</button>
-</div>
-<!-- Admin-only: opens the shared status/resolution-note panel in the
-     right-hand column, populated with this report's details. -->
-<div class="hidden border-t border-outline-variant/60 pt-2.5 mt-2.5" data-role-visible="department_admin,super_admin">
-<button type="button" class="flex items-center gap-1 text-label-sm font-label-sm text-secondary hover:underline" onclick="selectReportForReview(this)">
-Manage Status <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</button>
-</div>
-</div>
-</div>
-</article>
-</div>
-<!-- Right Column: Submission Form + (for admins) Status/Resolution Detail Panel -->
+<!-- Right Column: Submission Panel (student/faculty only -- hidden by reports.js for admin roles) -->
 <div class="lg:col-span-5 xl:col-span-4 flex flex-col gap-6 sticky top-20">
-<!-- Issue Submission Form -->
-<aside class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 shadow-sm" id="submit-panel">
+<aside class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 shadow-sm" id="report-panel">
 <div class="flex items-center justify-between border-b border-outline-variant pb-3 mb-4">
 <div>
 <h2 class="text-headline-sm font-headline-sm text-primary tracking-tight">+ Report an Issue</h2>
@@ -466,145 +79,55 @@ Manage Status <span class="material-symbols-outlined text-[16px]">arrow_forward<
 </div>
 <span class="material-symbols-outlined text-outline text-[20px]">assignment_add</span>
 </div>
-<form class="space-y-4" onsubmit="event.preventDefault(); alert('Incident report submitted successfully to dispatch triage!');">
-<!-- Photo Upload Dropzone Preview -->
+<form class="space-y-4" id="report-form">
 <div>
-<label class="block text-label-md font-label-md text-on-surface-variant mb-1.5">
-              Photo Evidence <span class="text-outline font-normal">[RECOMMENDED]</span>
-</label>
-<div class="border-2 border-dashed border-outline-variant hover:border-secondary rounded p-4 text-center bg-surface transition-colors cursor-pointer group">
-<span class="material-symbols-outlined text-outline group-hover:text-secondary text-[28px] mb-1">add_a_photo</span>
-<p class="text-body-sm font-body-sm text-on-surface">Click to upload or drag photo</p>
-<p class="text-label-sm font-label-sm text-outline mt-0.5">JPG, PNG up to 10MB</p>
+<label class="block text-label-md font-label-md text-on-surface-variant mb-1.5">Photo Evidence <span class="text-outline font-normal">[OPTIONAL]</span></label>
+<input id="report-photo" type="file" accept="image/png,image/jpeg,image/webp,image/heic" class="w-full text-body-sm font-body-sm border-2 border-dashed border-outline-variant hover:border-secondary rounded p-3 bg-surface transition-colors cursor-pointer">
 </div>
-</div>
-<!-- Issue Title -->
 <div>
-<label class="block text-label-md font-label-md text-on-surface-variant mb-1">
-              Issue Title <span class="text-error text-label-sm font-code-sm">[REQUIRED]</span>
-</label>
-<input class="w-full bg-surface-container-lowest border border-outline-variant rounded px-3 py-2 text-body-md font-body-md text-on-surface placeholder:text-outline focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors" placeholder="e.g. Loose ceiling wire or sink leakage" required="" type="text">
+<label class="block text-label-md font-label-md text-on-surface-variant mb-1">Issue Title <span class="text-error text-label-sm font-code-sm">[REQUIRED]</span></label>
+<input id="report-title" class="w-full bg-surface-container-lowest border border-outline-variant rounded px-3 py-2 text-body-md font-body-md text-on-surface placeholder:text-outline focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors" placeholder="e.g. Loose ceiling wire or sink leakage" required type="text">
 </div>
-<!-- Department / Category Dropdown -->
 <div>
-<label class="block text-label-md font-label-md text-on-surface-variant mb-1">
-              Department / Category <span class="text-error text-label-sm font-code-sm">[REQUIRED]</span>
-</label>
-<select class="w-full bg-surface-container-lowest border border-outline-variant rounded px-3 py-2 text-body-md font-body-md text-on-surface focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors" required="">
-<option disabled="" selected="" value="">Select category...</option>
-<option value="electrical">Electrical</option>
-<option value="plumbing">Plumbing</option>
-<option value="hvac">HVAC</option>
-<option value="av">AV Equipment</option>
-<option value="furniture">Furniture</option>
+<label class="block text-label-md font-label-md text-on-surface-variant mb-1">Category <span class="text-error text-label-sm font-code-sm">[REQUIRED]</span></label>
+<select id="report-category" class="w-full bg-surface-container-lowest border border-outline-variant rounded px-3 py-2 text-body-md font-body-md text-on-surface focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors" required>
+<option disabled selected value="">Loading categories&hellip;</option>
 </select>
 </div>
-<!-- Location Inputs (Building & Room) -->
+<div>
+<label class="block text-label-md font-label-md text-on-surface-variant mb-1">Department <span class="text-outline font-normal">[OVERRIDE AUTO-ROUTING]</span></label>
+<select id="report-department-override" class="w-full bg-surface-container-lowest border border-outline-variant rounded px-3 py-2 text-body-md font-body-md text-on-surface focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors">
+<option value="">Auto-suggest from category (recommended)</option>
+</select>
+</div>
 <div class="grid grid-cols-2 gap-3">
 <div>
-<label class="block text-label-md font-label-md text-on-surface-variant mb-1">
-                Building <span class="text-error text-label-sm font-code-sm">*</span>
-</label>
-<input class="w-full bg-surface-container-lowest border border-outline-variant rounded px-3 py-2 text-body-md font-body-md text-on-surface placeholder:text-outline focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors" placeholder="e.g. Lecture Hall" required="" type="text">
+<label class="block text-label-md font-label-md text-on-surface-variant mb-1">Building <span class="text-error text-label-sm font-code-sm">*</span></label>
+<input id="report-building" class="w-full bg-surface-container-lowest border border-outline-variant rounded px-3 py-2 text-body-md font-body-md text-on-surface placeholder:text-outline focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors" placeholder="e.g. Hostel-3" required type="text">
 </div>
 <div>
-<label class="block text-label-md font-label-md text-on-surface-variant mb-1">
-                Room / Area <span class="text-error text-label-sm font-code-sm">*</span>
-</label>
-<input class="w-full bg-surface-container-lowest border border-outline-variant rounded px-3 py-2 text-body-md font-body-md text-on-surface placeholder:text-outline focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors" placeholder="e.g. 3B or Hallway" required="" type="text">
+<label class="block text-label-md font-label-md text-on-surface-variant mb-1">Floor <span class="text-error text-label-sm font-code-sm">*</span></label>
+<input id="report-floor" class="w-full bg-surface-container-lowest border border-outline-variant rounded px-3 py-2 text-body-md font-body-md text-on-surface placeholder:text-outline focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors" placeholder="e.g. Ground or 2" required type="text">
 </div>
 </div>
-<!-- Description Textarea -->
 <div>
-<label class="block text-label-md font-label-md text-on-surface-variant mb-1">
-              Description <span class="text-outline font-normal">[DETAILS HELP DISPATCH]</span>
-</label>
-<textarea class="w-full bg-surface-container-lowest border border-outline-variant rounded px-3 py-2 text-body-md font-body-md text-on-surface placeholder:text-outline focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors resize-none" placeholder="Provide context, safety concerns, or specific times issue occurs..." rows="3"></textarea>
+<label class="block text-label-md font-label-md text-on-surface-variant mb-1">Room / Area <span class="text-error text-label-sm font-code-sm">*</span></label>
+<input id="report-area-room" class="w-full bg-surface-container-lowest border border-outline-variant rounded px-3 py-2 text-body-md font-body-md text-on-surface placeholder:text-outline focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors" placeholder="e.g. Room 204 or Boys' Washroom" required type="text">
 </div>
-<!-- Urgency Quick Toggle -->
-<div class="flex items-center gap-2 p-2 rounded bg-surface border border-outline-variant">
-<input class="rounded border-outline-variant text-primary focus:ring-secondary w-4 h-4" id="urgent" type="checkbox">
-<label class="text-label-sm font-label-sm text-on-surface flex items-center gap-1.5 cursor-pointer" for="urgent">
-<span class="material-symbols-outlined text-[16px] text-error">priority_high</span>
-              Mark as Hazardous Condition (Immediate Dispatch)
-            </label>
+<div>
+<label class="block text-label-md font-label-md text-on-surface-variant mb-1">Description <span class="text-outline font-normal">[DETAILS HELP DISPATCH]</span></label>
+<textarea id="report-description" class="w-full bg-surface-container-lowest border border-outline-variant rounded px-3 py-2 text-body-md font-body-md text-on-surface placeholder:text-outline focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors resize-none" placeholder="Provide context, safety concerns, or specific times issue occurs..." rows="3" required></textarea>
 </div>
-<!-- Submit Button -->
-<button class="w-full bg-primary hover:bg-primary-container text-on-primary py-2.5 rounded font-title-md text-title-md shadow-sm transition-all duration-150 active:scale-[0.99] flex items-center justify-center gap-2" type="submit">
-<span class="">Submit Report</span>
+<p id="report-error" class="hidden text-error text-body-sm font-body-sm"></p>
+<button id="report-submit" class="w-full bg-primary hover:bg-primary-container text-on-primary py-2.5 rounded font-title-md text-title-md shadow-sm transition-all duration-150 active:scale-[0.99] flex items-center justify-center gap-2" type="submit">
+<span>Submit Report</span>
 <span class="material-symbols-outlined text-[18px]">send</span>
 </button>
 </form>
 </aside>
-<!-- Status & Resolution Detail Panel — department_admin/super_admin only.
-     Populated by selectReportForReview() when a "Manage Status" link is
-     clicked on a card in the feed. -->
-<aside class="hidden bg-surface-container-lowest border border-outline-variant rounded-lg p-5 shadow-sm" id="detail-panel" data-role-visible="department_admin,super_admin">
-<div class="flex items-center justify-between border-b border-outline-variant pb-3 mb-4">
-<div>
-<span class="text-label-sm font-label-sm font-mono font-bold text-secondary" id="detail-id-label">SELECT A REPORT</span>
-<h2 class="text-headline-sm font-headline-sm text-primary tracking-tight">Issue Preview &amp; Actions</h2>
-</div>
-<span class="hidden px-2.5 py-1 rounded text-label-sm font-label-sm font-semibold" id="detail-status-pill"></span>
-</div>
-<!-- Empty state: shown until a report is selected -->
-<div class="flex flex-col items-center text-center gap-2 py-10 text-on-surface-variant" id="detail-empty-state">
-<span class="material-symbols-outlined text-[32px] text-outline">touch_app</span>
-<p class="text-body-sm font-body-sm">Click "Manage Status" on a report in the list to review it and update its status here.</p>
-</div>
-<!-- Populated state: filled in by selectReportForReview() -->
-<div class="hidden flex-col gap-3" id="detail-content">
-<div>
-<h3 class="text-title-md font-headline-sm font-bold text-primary leading-tight" id="detail-title"></h3>
-<p class="text-body-sm font-body-sm text-on-surface-variant mt-1.5 leading-relaxed" id="detail-description"></p>
-</div>
-<div>
-<span class="text-label-sm font-label-sm font-semibold text-primary block mb-1">Attached Photo:</span>
-<div class="rounded overflow-hidden border border-outline-variant bg-surface-container-low">
-<img class="w-full h-40 object-cover" id="detail-photo" src=""/>
-</div>
-</div>
-<div class="grid grid-cols-2 gap-2 text-label-sm font-label-sm py-2 bg-surface-container-low rounded p-3 border border-outline-variant">
-<div>
-<span class="text-outline block">Department</span>
-<span class="font-semibold text-primary" id="detail-department"></span>
-</div>
-<div>
-<span class="text-outline block">Location</span>
-<span class="font-semibold text-primary" id="detail-location"></span>
-</div>
-<div class="mt-1">
-<span class="text-outline block">Reported By</span>
-<span class="font-semibold text-primary" id="detail-reporter"></span>
-</div>
-<div class="mt-1">
-<span class="text-outline block">Community Support</span>
-<span class="font-semibold text-primary" id="detail-upvotes"></span>
-</div>
-</div>
-<div class="pt-1">
-<label class="text-label-sm font-label-sm font-bold text-primary block mb-1.5 uppercase tracking-wide">Update Issue Status</label>
-<div class="grid grid-cols-3 gap-2 mb-3" id="detail-status-buttons">
-<button type="button" class="py-2 px-2 rounded border-2 font-bold text-label-sm text-center transition-colors" data-status-option="Pending" onclick="setDetailStatus(this)">Pending</button>
-<button type="button" class="py-2 px-2 rounded border-2 font-bold text-label-sm text-center transition-colors" data-status-option="In Progress" onclick="setDetailStatus(this)">In Progress</button>
-<button type="button" class="py-2 px-2 rounded border-2 font-bold text-label-sm text-center transition-colors" data-status-option="Resolved" onclick="setDetailStatus(this)">Resolved</button>
-</div>
-<label class="text-label-sm font-label-sm text-on-surface-variant block mb-1">Resolution Note / Action Taken (Optional)</label>
-<textarea id="detail-note" rows="2" class="w-full text-body-sm font-body-sm p-2.5 border border-outline-variant rounded bg-surface placeholder:text-outline focus:border-secondary focus:ring-1 focus:ring-secondary outline-none" placeholder="e.g. Electrician sent to isolate breaker; replaced fuse wire..."></textarea>
-<button type="button" class="w-full mt-3 py-2.5 bg-primary hover:bg-primary-container text-on-primary font-title-md text-title-md rounded shadow-sm transition-colors flex items-center justify-center gap-2 active:scale-[0.99]" onclick="saveDetailUpdate()">
-<span class="material-symbols-outlined text-[18px]">save</span>Save Status Update
-</button>
-<span class="hidden items-center justify-center gap-1 text-label-sm font-label-sm text-[#065F46] mt-2" id="detail-save-confirm">
-<span class="material-symbols-outlined text-[14px]">check_circle</span>Saved
-</span>
-</div>
-</div>
-</aside>
 </div>
 </div>
 </main>
-<!-- Responsive Sliding Overlay for Mobile Report Drawer -->
-
 <!-- Minimal Footer (Shared Component: Footer) -->
 <footer class="bg-surface-container-lowest border-t border-outline-variant mt-auto">
 <div class="flex flex-col sm:flex-row justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto gap-4">
@@ -620,7 +143,7 @@ Manage Status <span class="material-symbols-outlined text-[16px]">arrow_forward<
 </div>
 </div>
 </footer>
-<!-- Shared helpers (upvoteToggle, applyRole, statusChanged) -->
+<script src="../assets/api.js"></script>
 <script src="../assets/shared.js"></script>
 <script src="reports.js"></script>
 </body></html>

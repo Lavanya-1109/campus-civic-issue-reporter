@@ -1,0 +1,13 @@
+/* Dashboard shell styles. The fetched reports fragment keeps its own utility classes. */
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; }
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 20;
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
+}
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid #0058be;
+  outline-offset: 2px;
+}
