@@ -1,8 +1,9 @@
 \documentclass[11pt]{report}
+
 % ==================== Imports ====================
 \usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
-\usepackage{amssymb} % required for \checkmark used in the roles table
+\usepackage{amssymb} % kept for general math symbols
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric,shapes.multipart,arrows.meta,positioning,calc,fit,backgrounds,decorations.pathreplacing}
 \usepackage{pgf-umlcd}
@@ -16,10 +17,23 @@
 \usepackage{caption}
 \usepackage{float}
 \usepackage{xspace}
-\usepackage[hidelinks]{hyperref} % FIX: hidelinks removes the colored/boxed borders on TOC + \ref links
+\usepackage{hyperref}
+\usepackage{titlesec}
+
 \newcommand{\sysname}{Civic Issue Reporter\xspace}
+
+% ==================== Title formatting: right-aligned ====================
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\raggedleft}
+  {\chaptertitlename\ \thechapter}{20pt}{\Huge\raggedleft}
+\titleformat{\section}
+  {\normalfont\Large\bfseries\raggedleft}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\raggedleft}{\thesubsection}{1em}{}
+
 \begin{document}
 \raggedbottom
+
 % ==================== Title Page (manually built, no custom class needed) ====================
 \begin{titlepage}
   \centering
@@ -30,16 +44,21 @@
   {\large A Role-Based Web Platform for Reporting, Routing, and Resolving\\
   Campus Infrastructure Issues at TIET\par}
   \vspace{2cm}
-  \begin{tabular}{l}
-    \texttt{1024030227} Lavanya Sharma \\
-    \texttt{1024030309} Parismita Thapa \\
-    \texttt{1024030389} Rudra Yadav \\
-    \texttt{1024030291} Nadeem Esrar
-  \end{tabular}\par
-  \vspace{1.5cm}
-  {\large BE Third Year, Computer Engineering (COE)\par}
-  \vspace{1cm}
-  Advisor: Ms.\ Anushka\par
+  \textbf{Submitted by:}\par
+  \vspace{6pt}
+  \texttt{1024030227} Lavanya Sharma\par
+  \texttt{1024030309} Parismita Thapa\par
+  \texttt{1024030389} Rudra Yadav\par
+  \texttt{1024030291} Nadeem Esrar\par
+
+  \vspace{1.2cm}
+  \large Group: \texttt{3C22} \quad BE Third Year, Computer Engineering (COE)\par
+  \vspace{1.2cm}
+
+  \textbf{Submitted to:}\par
+  \vspace{6pt}
+  Ms.\ Anushka\par
+
   \vfill
   {\large Mid-Semester Evaluation\par}
   \vspace{0.2cm}
@@ -47,12 +66,16 @@
   \vspace{0.15cm}
   Thapar Institute of Engineering and Technology, Patiala\par
 \end{titlepage}
+
 \tableofcontents
+
 % ===================================================================
 % CHAPTER 1: INTRODUCTION
 % ===================================================================
 \chapter{Introduction}
+
 \section{Background and Context}
+
 Campus infrastructure faults at the Thapar Institute of Engineering and
 Technology (TIET) -- broken equipment, plumbing leaks, faulty wiring,
 damaged furniture, non-functional washrooms, and unsafe walkways -- are
@@ -65,6 +88,7 @@ department-specific, the effective bottleneck in resolving these issues
 is not maintenance capacity itself but \emph{issue visibility and
 routing}: nobody has a shared, authoritative view of what has already
 been reported, to whom, and at what stage it stands.
+
 The \sysname project applies standard software engineering
 practice~\cite{sommerville2016} -- requirement analysis, system design,
 and structured, iterative development -- to this real campus problem. The broader
@@ -74,9 +98,12 @@ students and faculty. The immediate engineering objective is to design
 and implement a measurable, deployable web platform for efficient,
 department-routed issue resolution across academic blocks, hostels, the
 library, cafeterias, the sports complex, and other common areas.
+
 \subsection{Problem Statement}
+
 The absence of a structured reporting channel produces several concrete
 problems:
+
 \begin{itemize}
   \item \textbf{No single source of truth:} the same issue is reported
     independently to multiple people, with no shared record of what has
@@ -96,13 +123,16 @@ problems:
     -- by building, department, or category -- that lets facilities
     management identify recurring or high-impact problem areas.
 \end{itemize}
+
 \section{Project Objectives}
+
 The primary goal of the project is to design and deploy a role-based web
 platform that gives the TIET campus community a structured, trackable
 channel for reporting and resolving infrastructure issues, while
 reducing duplicate reporting and improving response time to
 high-priority faults. This goal is decomposed into the following SMART
 (Specific, Measurable, Achievable, Relevant, Time-bound) objectives:
+
 \begin{enumerate}
   \item \textbf{Objective 1 -- Low-friction reporting:} Give students
     and faculty a single channel to report infrastructure issues with a
@@ -131,12 +161,16 @@ high-priority faults. This goal is decomposed into the following SMART
     institution-wide visibility respectively, so ownership of an issue
     is always clear.
 \end{enumerate}
+
 % ===================================================================
 % CHAPTER 2: METHODOLOGY AND DESIGN
 % ===================================================================
 \chapter{Methodology and Design}
+
 \section{System Architecture}
+
 \subsection{High-Level Design}
+
 The \sysname is designed as a three-tier web application (see
 Figure~\ref{fig:architecture}). A React single-page frontend serves two
 distinct experiences from the same codebase: a low-friction submission
@@ -155,6 +189,7 @@ so that image growth does not pressure the primary database. A CI/CD
 pipeline (GitHub Actions) builds, lints, and tests the backend on every
 change and deploys to a staging environment, in line with the project's
 weekly iteration cadence.
+
 \begin{figure}[H]
   \centering
   \resizebox{\textwidth}{!}{%
@@ -172,6 +207,7 @@ weekly iteration cadence.
        React SPA\\
        \footnotesize Reporter UI (submit / browse / upvote)\\
        \footnotesize Admin \& Super-Admin dashboards};
+
     % Tier 2: API
     \node[box, minimum width=8.6cm, minimum height=3.4cm] (api) at (0,2.6)
       {};
@@ -181,15 +217,19 @@ weekly iteration cadence.
     \node[infra, minimum width=3.9cm] (route) at (2.15,2.35) {Routing \& Duplicate\\\footnotesize Check Service};
     \node[infra, minimum width=3.9cm] (esc) at (-2.15,0.95) {Escalation\\\footnotesize Engine};
     \node[infra, minimum width=3.9cm] (notif) at (2.15,0.95) {Notification\\\footnotesize Service (polling)};
+
     % Tier 3: Data
     \node[box, minimum width=5.6cm] (db) at (-2.4,-1.4)
       {\textbf{Data Tier}\\ PostgreSQL\\ \footnotesize issues, users, departments,\\ \footnotesize upvotes, notifications};
+
     % Object storage
     \node[box, minimum width=4.8cm, fill=green!8] (store) at (3,-1.4)
       {\textbf{Object Storage}\\ Cloudinary / AWS S3\\ \footnotesize photo attachments};
+
     % CI/CD
     \node[box, minimum width=5.0cm, fill=purple!6] (cicd) at (7.6,2.6)
       {\textbf{CI/CD Pipeline}\\ GitHub Actions\\ \footnotesize build $\cdot$ lint $\cdot$ test\\ \footnotesize $\rightarrow$ staging deploy};
+
     % Arrows
     \draw[arrowstyle] (client) -- node[right, font=\scriptsize\sffamily]{HTTPS / REST (JSON)} (api.north);
     \draw[arrowstyle] (api.south -| db.north) -- (db.north);
@@ -199,7 +239,9 @@ weekly iteration cadence.
   \caption{Three-tier system architecture of the Civic Issue Reporter platform.}
   \label{fig:architecture}
 \end{figure}
+
 \subsection{Use Case View}
+
 Figure~\ref{fig:usecase} presents the system's use-case model. Students
 and Faculty are modelled as functionally identical actors: both may
 report an issue (which includes a duplicate check), view the full list
@@ -208,17 +250,16 @@ filing a new one. An Administrator can view and update the status of
 issues owned by their own department, while the Super-Admin
 generalizes an Administrator and additionally oversees issues across
 \emph{all} departments.
+
 \begin{figure}[H]
   \centering
-  % NOTE: upload your use case diagram image into the Overleaf file tree
-  % (the upload/up-arrow icon above the file list) and make sure the
-  % filename below matches it EXACTLY (case-sensitive). Nothing will
-  % render here until that file actually exists in the project.
   \includegraphics[width=0.95\textwidth]{use_case_diagram.png}
   \caption{Use case diagram for the Civic Issue Reporter system.}
   \label{fig:usecase}
 \end{figure}
+
 \subsection{Technical Stack}
+
 \begin{table}[H]
 \centering
 \begin{tabular}{|p{2.6cm}|p{3.6cm}|p{8cm}|}
@@ -241,7 +282,9 @@ CI/CD & GitHub Actions & Build, lint, and test on every change; deploy to stagin
 \caption{Technology choices by architectural tier.}
 \label{tab:web-architecture}
 \end{table}
+
 \section{Data Model}
+
 Figure~\ref{fig:classdiagram} shows the core class/data model, drawn
 using standard UML class-diagram notation~\cite{fowler2004uml} and
 informed by relational data-modelling practice~\cite{elmasri2015}.
@@ -257,10 +300,12 @@ receive many \texttt{Upvote} records, each tied to exactly one
 inflating an issue's count. \texttt{Notification} records the four
 event types described in Section~\ref{sec:notifications} and are always
 addressed to a single \texttt{User}.
+
 \begin{figure}[H]
   \centering
   \resizebox{\textwidth}{!}{%
   \begin{tikzpicture}[font=\footnotesize]
+
   \begin{class}[text width=6cm]{User}{0,14}
     \attribute{\# userId : UUID}
     \attribute{\# name : String}
@@ -270,28 +315,34 @@ addressed to a single \texttt{User}.
     \operation{+ login(email, password) : Session}
     \operation{+ logout() : void}
   \end{class}
+
   \begin{class}[text width=4.4cm]{Student}{-9,7.6}
     \inherit{User}
   \end{class}
+
   \begin{class}[text width=4.4cm]{Faculty}{-3.6,7.6}
     \inherit{User}
   \end{class}
+
   \begin{class}[text width=5.6cm]{Administrator}{2.9,7.6}
     \attribute{\# department : Department}
     \operation{+ updateStatus(issueId, status)}
     \operation{+ viewDepartmentIssues()}
     \inherit{User}
   \end{class}
+
   \begin{class}[text width=6cm]{SuperAdmin}{2.9,0.5}
     \operation{+ viewAllDepartments()}
     \operation{+ setEscalationThreshold(cat, val)}
     \inherit{Administrator}
   \end{class}
+
   \begin{class}[text width=6cm]{Department}{10.5,7.6}
     \attribute{\# deptId : UUID}
     \attribute{\# name : String}
     \attribute{\# escalationThreshold : int}
   \end{class}
+
   \begin{class}[text width=6.4cm]{Issue}{10.5,0.5}
     \attribute{\# issueId : UUID}
     \attribute{\# title : String}
@@ -306,12 +357,14 @@ addressed to a single \texttt{User}.
     \operation{+ checkDuplicate() : Issue}
     \operation{+ escalateIfThresholdCrossed()}
   \end{class}
+
   \begin{class}[text width=5.4cm]{Upvote}{-9,0.5}
     \attribute{\# upvoteId : UUID}
     \attribute{\# userId : UUID}
     \attribute{\# issueId : UUID}
     \attribute{\# timestamp : Timestamp}
   \end{class}
+
   \begin{class}[text width=5.4cm]{Notification}{-3,-6.6}
     \attribute{\# notifId : UUID}
     \attribute{\# userId : UUID}
@@ -321,17 +374,22 @@ addressed to a single \texttt{User}.
     \attribute{\# readStatus : Boolean}
     \attribute{\# timestamp : Timestamp}
   \end{class}
+
   \association{User}{}{1}{Issue}{reports}{0..*}
   \association{User}{}{1}{Upvote}{casts}{0..*}
   \association{Issue}{}{1}{Upvote}{}{0..*}
   \association{Department}{}{1}{Issue}{owns}{0..*}
   \association{User}{}{1}{Notification}{receives}{0..*}
+
   \end{tikzpicture}}
   \caption{Class diagram / core data model of the Civic Issue Reporter system.}
   \label{fig:classdiagram}
 \end{figure}
+
 \section{Process Model}
+
 \subsection{Context and Level-1 Data Flow Diagrams}
+
 Figures~\ref{fig:dfd0} and~\ref{fig:dfd1} present the Gane--Sarson data
 flow diagrams for the system. The Context Diagram (Level 0) fixes the
 system boundary and its external entities -- Student/Faculty,
@@ -340,39 +398,24 @@ between them and the system. The Level-1 diagram decomposes the system
 into its major processes (submission and duplicate check, routing,
 status update, and escalation/notification) and the data stores they
 read from or write to.
+
 \begin{figure}[H]
   \centering
-  \resizebox{0.85\textwidth}{!}{%
-  \begin{tikzpicture}[
-      entity/.style={draw, thick, minimum width=2.6cm, minimum height=1.3cm, align=center, font=\sffamily\small},
-      process/.style={draw, thick, circle, minimum size=2.6cm, align=center, font=\sffamily\small},
-      arrowstyle/.style={-Latex, thick, font=\scriptsize\sffamily}
-    ]
-    \node[entity] (student) at (-6,3) {Student /\\Faculty};
-    \node[entity] (admin) at (-6,-3) {Administrator};
-    \node[entity] (super) at (6,-3) {Super-Admin};
-    \node[process] (sys) at (0,0) {0\\Civic Issue\\Reporter\\System};
-    \draw[arrowstyle] (student) -- node[above, sloped]{issue report (photo, category, location)} (sys);
-    \draw[arrowstyle] (sys) -- node[below, sloped]{status \& upvote/duplicate notifications} (student);
-    \draw[arrowstyle] (admin) -- node[above, sloped]{status update} (sys);
-    \draw[arrowstyle] (sys) -- node[below, sloped]{new-report / department issue list} (admin);
-    \draw[arrowstyle] (sys) -- node[above, sloped]{escalation alert / all-department view} (super);
-    \draw[arrowstyle] (super) -- node[below, sloped]{escalation threshold config} (sys);
-  \end{tikzpicture}}
+  \includegraphics[width=0.8\textwidth]{dfd_level0.pdf}
   \caption{Context (Level 0) data flow diagram.}
   \label{fig:dfd0}
 \end{figure}
+
 \begin{figure}[H]
   \centering
-  % NOTE: upload level1_dfd.png into the Overleaf file tree (the
-  % upload/up-arrow icon above the file list), exactly like
-  % use_case_diagram.png above -- the filename must match exactly.
-  \includegraphics[width=0.95\textwidth]{level1_dfd.png}
+  \includegraphics[width=\textwidth]{dfd_level1.pdf}
   \caption{Level-1 data flow diagram decomposing the system's major processes.}
   \label{fig:dfd1}
 \end{figure}
+
 \subsection{Core Workflow}
 \label{sec:notifications}
+
 Figure~\ref{fig:activity} models the end-to-end reporting workflow as a
 UML activity diagram. A student or faculty member submits an issue with
 a photo, category, and structured location. The system auto-suggests a
@@ -392,6 +435,7 @@ types are generated across this workflow: status-change (to the
 reporter), upvote/duplicate activity (to the reporter), new-report
 (to the owning department's Administrator), and escalation (to the
 Super-Admin).
+
 \begin{figure}[H]
   \centering
   \resizebox{0.8\textwidth}{!}{%
@@ -418,6 +462,7 @@ Super-Admin).
     \node[draw, thick, circle, fill=black, inner sep=2pt] () at (2,1.3) {};
     \draw[draw, thick, circle, fill=white] (2,1.3) circle (0.22cm);
     \draw[draw, thick, circle, fill=black] (2,1.3) circle (0.11cm);
+
     \draw[arrowstyle] (start) -- (submit);
     \draw[arrowstyle] (submit) -- (suggest);
     \draw[arrowstyle] (suggest) -- (dupdec);
@@ -436,8 +481,11 @@ Super-Admin).
   \caption{UML activity diagram for the core issue reporting and resolution workflow.}
   \label{fig:activity}
 \end{figure}
+
 \section{Implementation Details}
+
 \subsection{Module 1: Reporting and Duplicate Detection}
+
 The submission module implements a structured reporting form: photo
 upload, category selection with an automatic department suggestion
 (manually overridable by the reporter or an admin), and location entry
@@ -445,9 +493,10 @@ via a \emph{Building $\rightarrow$ Floor $\rightarrow$ Area/Room}
 hierarchy (dropdowns plus free text), rather than GPS or a map pin,
 since GPS is unreliable indoors and map APIs add cost and complexity the
 MVP does not need.
+
 Duplicate detection is a heuristic combining three signals, in the
 spirit of duplicate bug-report detection studied in the software
-engineering literature~\cite{bettenburg2008duplicate}, so that no
+engineering literature~\cite{brownlee2006duplicate}, so that no
 single weak signal can produce a false match on its own:
 \begin{enumerate}
   \item \textbf{Location match} -- exact match on building and floor,
@@ -466,6 +515,7 @@ surfaces the top candidate to the reporter for a human decision and
 never fully auto-merges, auto-deletes, or auto-rejects a submission,
 keeping a human in the loop for a step that directly affects data
 quality.
+
 \textbf{Mid-semester status.} The schema-level support for this module
 is in place: a dedicated \texttt{duplicate\_checks} table exists,
 along with the description, location, and department fields needed to
@@ -474,7 +524,9 @@ logic itself (NLP/TF-IDF comparison) has not been implemented yet, so
 at this checkpoint every submission simply creates a new issue; wiring
 the matching logic to this schema is scoped as post-mid-semester work
 (Section~\ref{sec:mst-scope}).
+
 \subsection{Module 2: Roles, Escalation, and Notifications}
+
 Access is role-based, implemented via JWT-based sessions~\cite{jwt2015}
 with role-based access control enforced at the API layer, matching the class
 hierarchy of Figure~\ref{fig:classdiagram}. Students and faculty share
@@ -485,6 +537,7 @@ additionally the only role notified on every escalation event
 regardless of which department owns the issue. This module -- roles and
 status transitions -- is functionally complete and tested (see
 Table~\ref{tab:roles} in Chapter~3).
+
 A single flat upvote threshold across every category would either be
 too high for safety-critical issues (which should not have to wait for
 popularity to earn attention) or too low for high-traffic areas (where
@@ -494,12 +547,14 @@ a \textbf{default of 5 upvotes} used uniformly for the MVP, since no
 real usage data from TIET yet exists to calibrate per-category values
 responsibly. This is treated as a known, temporary simplification, to
 be reviewed and tuned per category after the pilot.
+
 \textbf{Mid-semester status.} The \texttt{priority} field on
 \texttt{Issue} and the per-category \texttt{escalationThreshold} field
 on \texttt{Department} (Figure~\ref{fig:classdiagram}) already exist in
 the database, but the application logic that checks accumulated upvote
 counts against the threshold and flips an issue's priority has not been
 written yet -- this is scoped as post-mid-semester work.
+
 Four notification types are designed to close the feedback loop
 described in Section~\ref{sec:notifications}, to be delivered via
 in-app polling rather than WebSockets to keep the MVP's infrastructure
@@ -508,8 +563,10 @@ and failure modes simple. \textbf{Mid-semester status:} the
 written to, but the polling mechanism that would surface these
 notifications to a user in the UI has not been built yet; this is also
 scoped as post-mid-semester work.
+
 \section{Mid-Semester Scope}
 \label{sec:mst-scope}
+
 To keep the mid-semester submission honest about what has actually been
 built versus what is merely designed, this section states explicitly
 which parts of Chapter~2's design are implemented end-to-end today and
@@ -519,6 +576,7 @@ relational schema for every MVP feature was designed and migrated
 early (Weeks 1--2 of the timeline) so that the remaining application
 logic could be built incrementally against a stable data model, rather
 than the schema and logic being developed in lockstep feature-by-feature.
+
 \begin{itemize}
   \item \textbf{Duplicate detection:} the \texttt{duplicate\_checks}
     table and the description/location/department matching structure
@@ -534,6 +592,7 @@ than the schema and logic being developed in lockstep feature-by-feature.
     table and its write path work, but the polling mechanism that would
     surface these notifications to a user in the UI is not built.
 \end{itemize}
+
 These three items are precisely Objectives 3, 4, and 5 from
 Section~1.2, and are the team's explicit focus for the post-mid-semester
 phase of the timeline (Weeks 9 onward), alongside the campus pilot in
@@ -542,10 +601,12 @@ chapter -- the three-tier architecture, the role-based access model, the
 structured submission flow, and department routing -- is implemented
 and already reflected in the status table in Chapter~3
 (Table~\ref{tab:status}).
+
 % ===================================================================
 % CHAPTER 3: RESULTS AND EVALUATION
 % ===================================================================
 \chapter{Results and Evaluation}
+
 This chapter reports progress against the Chapter~2 design as of the
 mid-semester checkpoint (end of Week 8 in the project timeline: planning,
 authentication/RBAC, the submission-to-database flow, the
@@ -555,7 +616,9 @@ schedule, the metrics below distinguish between measurements already
 possible on the implemented modules and metrics that are defined and
 instrumented but whose real values will only be available once the
 pilot generates usage data.
+
 \section{Testing Methodology}
+
 \begin{itemize}
   \item \textbf{Unit testing:} individual backend components -- the
     department-routing function, the duplicate-similarity scorer, and
@@ -574,6 +637,7 @@ pilot generates usage data.
     members role-playing Student, Faculty, Administrator, and
     Super-Admin accounts, ahead of the bounded campus pilot.
 \end{itemize}
+
 \begin{table}[H]
 \centering
 \begin{tabular}{@{}lccccl@{}}
@@ -581,16 +645,18 @@ pilot generates usage data.
   \textbf{Role} & \textbf{Report} & \textbf{View all}
     & \textbf{Upvote} & \textbf{Change status} & \textbf{Scope} \\
   \midrule
-  Student        & \checkmark & \checkmark & \checkmark & --         & -- \\
-  Faculty        & \checkmark & \checkmark & \checkmark & --         & -- \\
-  Administrator  & --         & \checkmark & --         & \checkmark & Own department \\
-  Super-Admin    & --         & \checkmark & --         & \checkmark & All departments \\
+  Student        & Yes & Yes & Yes & --  & -- \\
+  Faculty        & Yes & Yes & Yes & --  & -- \\
+  Administrator  & --  & Yes & --  & Yes & Own department \\
+  Super-Admin    & --  & Yes & --  & Yes & All departments \\
   \bottomrule
 \end{tabular}
 \caption{Role-based permission matrix verified by integration tests.}
 \label{tab:roles}
 \end{table}
+
 \section{Implementation Status}
+
 \begin{table}[H]
 \centering
 \begin{tabular}{|p{6.4cm}|p{2.6cm}|p{5cm}|}
@@ -615,12 +681,15 @@ CI/CD pipeline (build, lint, test, staging deploy) & Complete & Runs on every pu
 \caption{Implementation status of MVP deliverables at the mid-semester checkpoint.}
 \label{tab:status}
 \end{table}
+
 \section{Evaluation Metrics}
+
 The following metrics are defined for the platform, each corresponding
 to a specific feature in Chapter~2. Values marked ``pending pilot'' are
 instrumented in the schema (e.g. status timestamps, the
 \texttt{read\_status} field) but require real reporting volume from the
 campus pilot to be meaningful.
+
 \begin{table}[h]
 \centering
 \begin{tabular}{|p{4.6cm}|p{5.4cm}|p{3.6cm}|}
@@ -643,8 +712,10 @@ campus pilot to be meaningful.
 \caption{Evaluation metrics and their status at the mid-semester checkpoint.}
 \label{tab:performance}
 \end{table}
+
 \section{Pilot Validation Plan}
 \label{sec:pilot}
+
 Once the remaining MVP modules (escalation, notifications) are
 complete, the platform will be validated with a bounded pilot: one or
 two hostel blocks plus one academic block, rather than campus-wide, to
@@ -655,7 +726,9 @@ or simulated by the team. An informal baseline -- a short survey on how
 long informally-reported issues currently take to get attention -- will
 give the metrics in Table~\ref{tab:performance} a comparison point,
 since no institutional baseline is tracked today.
+
 \section{Analysis}
+
 Against the six objectives in Section~1.2, Objectives 1, 2, and 6 are
 substantially met at this checkpoint: the reporting form, automatic
 routing, and role-scoped access are implemented and tested. Objective 3
@@ -668,6 +741,7 @@ is expected and is the reason the pilot exists. Objectives 4 and 5
 yet implemented, consistent with the Week 9 target in the project
 timeline; no claims about their real-world behaviour can be made before
 they are live.
+
 The main challenge encountered so far has been calibrating the
 duplicate-similarity threshold without real user-submitted description
 data: an overly strict threshold misses genuine duplicates, while an
@@ -678,11 +752,14 @@ decision rather than attempting to auto-tune the threshold from
 synthetic data, and by treating duplicate-detection precision
 (Table~\ref{tab:performance}) as a live signal to revisit once pilot
 data exists.
+
 % ===================================================================
 % CHAPTER 4: CONCLUSION
 % ===================================================================
 \chapter{Conclusion}
+
 \section{Summary of Work}
+
 This report has described the design and progressing implementation of
 the \sysname, a role-based web platform for reporting, tracking, and
 resolving campus infrastructure issues at TIET. Students and faculty can
@@ -697,7 +774,9 @@ checkpoint, authentication/RBAC, the structured submission flow, a
 duplicate-detection prototype, and CI/CD are complete, with dashboards
 in progress and escalation/notifications on schedule for the following
 weeks (Table~\ref{tab:status}).
+
 \section{Key Findings}
+
 \begin{itemize}
   \item \textbf{Finding 1:} Restricting duplicate comparison to
     \emph{open} issues within the same location/department bucket
@@ -717,7 +796,9 @@ weeks (Table~\ref{tab:status}).
     a labelled data point without requiring a separate hand-labelling
     effort.
 \end{itemize}
+
 \section{Future Work and Recommendations}
+
 \begin{itemize}
   \item Complete the auto-escalation engine and the four-type
     notification service (Week 9 of the timeline).
@@ -732,7 +813,9 @@ weeks (Table~\ref{tab:status}).
     in-app notifications, and search/filtering improvements on the
     public issue list as report volume grows.
 \end{itemize}
+
 \section{Final Remarks}
+
 The project's central engineering bet is that campus issue resolution is
 bottlenecked by \emph{visibility and routing}, not maintenance capacity,
 and that a structured, trackable reporting channel can address that
@@ -747,36 +830,41 @@ the system's routing, duplicate handling, and prioritization actually
 improve outcomes in practice, and the evaluation plan in
 Section~\ref{sec:pilot} has been designed specifically to make that
 determination measurable rather than anecdotal.
+
 % ===================================================================
 % BIBLIOGRAPHY (plain thebibliography -- no biber/references.bib needed)
 % ===================================================================
 \begin{thebibliography}{9}
+
 \bibitem{sommerville2016}
 I.~Sommerville, \emph{Software Engineering}, 10th ed. Pearson, 2016.
-\url{https://www.pearson.com/en-us/subject-catalog/p/Sommerville-Software-Engineering-10th-Edition/P200000003258}
+
 \bibitem{fielding2000rest}
 R.~T.~Fielding, ``Architectural Styles and the Design of Network-based
 Software Architectures,'' Ph.D. dissertation, Univ. of California,
 Irvine, 2000.
-\url{https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm}
+
 \bibitem{postgresql2024}
 The PostgreSQL Global Development Group, \emph{PostgreSQL Documentation},
-2024. \url{https://www.postgresql.org/docs/}
+2024.
+
 \bibitem{fowler2004uml}
 M.~Fowler, \emph{UML Distilled: A Brief Guide to the Standard Object
 Modeling Language}, 3rd ed. Addison-Wesley, 2004.
-\url{https://www.oreilly.com/library/view/uml-distilled-a/0321193687/}
+
 \bibitem{elmasri2015}
 R.~Elmasri and S.~B.~Navathe, \emph{Fundamentals of Database Systems},
 7th ed. Pearson, 2015.
-\url{https://www.pearson.com/en-us/subject-catalog/p/fundamentals-of-database-systems/P200000003546}
+
 \bibitem{jwt2015}
 M.~Jones, J.~Bradley, and N.~Sakimura, ``JSON Web Token (JWT),'' RFC 7519,
-IETF, 2015. \url{https://www.rfc-editor.org/rfc/rfc7519.html}
-\bibitem{bettenburg2008duplicate}
+IETF, 2015.
+
+\bibitem{brownlee2006duplicate}
 N.~Bettenburg, S.~Just, A.~Schr\"oter, C.~Weiss, R.~Premraj, and
 T.~Zimmermann, ``Duplicate Bug Reports Considered Harmful \dots Really?,''
-in \emph{Proc. IEEE Int. Conf. Software Maintenance (ICSM)}, 2008, pp.
-337--345. \url{https://thomas-zimmermann.com/publications/files/bettenburg-icsm-2008.pdf}
+in \emph{Proc. IEEE Int. Conf. Software Maintenance (ICSM)}, 2008.
+
 \end{thebibliography}
+
 \end{document}
