@@ -18,18 +18,20 @@
       <div class="department-brand-group">
         <a class="department-brand" href="#"><span class="department-brand__mark">UP</span><span>UnivPulse</span></a>
         <span class="department-meta">UCS503 Course Project</span>
-        <span class="department-role"><span class="material-symbols-outlined">electric_bolt</span>Electrical Dept. Admin</span>
+        <span class="department-role"><span class="material-symbols-outlined">apartment</span><span id="department-scope-label">Department Admin</span></span>
         <nav class="department-nav" aria-label="Primary navigation"><a class="is-active" href="#">Dashboard</a><a href="../reports/reports.html">Reports</a><a href="#analytics">Analytics</a></nav>
       </div>
       <div class="department-actions"><button class="icon-action" type="button" title="Notifications" aria-label="Notifications"><span class="material-symbols-outlined">notifications</span></button><button class="icon-action" type="button" title="Account" aria-label="Account"><span class="material-symbols-outlined">account_circle</span></button></div>
     </div>
   </header>
 
-  <main id="feed-mount" class="department-feed">
-    <div class="department-loading"><span class="material-symbols-outlined animate-spin">progress_activity</span><span>Loading reports...</span></div>
+  <main class="department-feed">
+    <div id="issues-feed-list" class="flex flex-col gap-3.5"></div>
+    <div id="issues-feed-empty" class="hidden department-loading"><span>No reports in your department right now.</span></div>
   </main>
 
   <footer class="department-footer"><div><strong>UnivPulse</strong><span>Copyright 2025 UnivPulse - UCS503 Course Project</span></div><nav><a href="#guidelines">Issue Guidelines</a><a href="#status">System Status</a><a href="#safety">Campus Safety</a><a href="#privacy">Privacy Policy</a></nav></footer>
+  <script src="../assets/api.js"></script>
   <script src="../assets/shared.js"></script>
   <script src="department_admin.js"></script>
 </body>

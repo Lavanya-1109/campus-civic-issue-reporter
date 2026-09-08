@@ -3,40 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UnivPulse - Campus Infrastructure Portal</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined:FILL@0..1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="auth.css">
+  <title>UnivPulse - Redirecting to Login</title>
+  <!--
+    Superseded: UnivPulse now has one real login implementation, wired to
+    the Flask backend, at ../react/dist/index.html (source in ../react/src).
+    This page (and sign_up.html) is kept only so old bookmarks/links don't
+    404 -- it just forwards to the real one.
+  -->
+  <meta http-equiv="refresh" content="0; url=../react/dist/index.html">
 </head>
-<body class="auth-page">
-  <header class="site-header"><div class="site-header__inner">
-    <a class="brand" href="login.html" aria-label="UnivPulse home"><span class="brand__mark material-symbols-outlined">account_balance</span><span><strong>UnivPulse</strong><small>UCS503 v2.4</small></span></a>
-    <div class="header-tools"><span class="gateway-status"><span class="status-dot"></span>Campus Grid Active</span><a class="text-link" href="#help"><span class="material-symbols-outlined">help_outline</span>System Docs</a></div>
-  </div></header>
-
-  <main class="auth-main"><div class="auth-shell">
-    <section class="demo-strip" aria-label="Demo presets"><span class="demo-strip__label"><span class="material-symbols-outlined">bolt</span>Demo Presets</span><div class="demo-strip__actions"><button class="button button--quiet" type="button" data-demo-role="student">Student / Faculty</button><button class="button button--quiet" type="button" data-demo-role="dept">Electrical Admin</button><button class="button button--quiet" type="button" data-demo-role="super">Super-Admin</button></div></section>
-    <section class="auth-card">
-      <header class="auth-card__header"><span class="hero-mark material-symbols-outlined">domain_verification</span><h1>UnivPulse Portal</h1><p>College Infrastructure Issue Reporter</p></header>
-      <div class="role-tabs" role="tablist" aria-label="Select access level">
-        <button class="role-tab is-active" id="tab-student" data-role-tab="student" type="button" role="tab" aria-selected="true"><span class="material-symbols-outlined">school</span>Student / Faculty</button>
-        <button class="role-tab" id="tab-dept" data-role-tab="dept" type="button" role="tab" aria-selected="false"><span class="material-symbols-outlined">engineering</span>Dept Admin</button>
-        <button class="role-tab" id="tab-super" data-role-tab="super" type="button" role="tab" aria-selected="false"><span class="material-symbols-outlined">admin_panel_settings</span>Super-Admin</button>
-      </div>
-      <div class="role-banner"><span class="material-symbols-outlined" id="role-icon">school</span><div><strong id="role-title">Campus Member Access</strong><p id="role-subtext">Log in using institutional @college.edu address to report incidents, track live repair tickets, and upvote existing infrastructure complaints.</p></div></div>
-      <form class="auth-form" id="login-form">
-        <div class="field" id="dept-selector-wrapper" hidden><label for="dept-select">Assigned Facility Domain</label><select id="dept-select"><option value="electrical">Division of Electrical &amp; Power Utilities</option><option value="plumbing">Sanitation &amp; Water Infrastructure</option><option value="hvac">HVAC &amp; Climate Control Systems</option><option value="structural">Civil &amp; Campus Carpentry Operations</option><option value="network">IT &amp; Campus Network Cabling</option></select></div>
-        <div class="field"><label for="identifier-input" id="label-identifier">College ID / Email Address</label><input id="identifier-input" placeholder="student.id@college.edu" value="akash.sharma@college.edu" required></div>
-        <div class="field"><div class="field__label-row"><label for="password-input">System Password</label><a class="text-link text-link--small" href="#reset">Forgot credentials?</a></div><div class="password-field"><input id="password-input" type="password" value="CampusPulse#2025" required><button class="icon-button" id="password-toggle" type="button" aria-label="Show password"><span class="material-symbols-outlined" id="pwd-icon">visibility</span></button></div></div>
-        <label class="checkbox-row"><input type="checkbox" checked>Remember on campus network</label>
-        <button class="button button--primary button--full" type="submit"><span id="btn-text">Sign In to Student Portal</span><span class="material-symbols-outlined">arrow_forward</span></button>
-        <a class="button button--secondary button--full" href="sign_up.html">Don't have an account? Sign Up <span class="material-symbols-outlined">person_add</span></a>
-      </form>
-    </section>
-  </div></main>
-
-  <footer class="site-footer"><strong>UnivPulse</strong><span>Copyright 2025 UnivPulse - UCS503 Course Project</span><nav><a href="#guidelines">Issue Guidelines</a><a href="#status">System Status</a><a href="#privacy">Privacy Policy</a></nav></footer>
-  <script src="login.js"></script>
+<body>
+  <p>Redirecting to <a href="../react/dist/index.html">the UnivPulse login page</a>&hellip;</p>
 </body>
 </html>
