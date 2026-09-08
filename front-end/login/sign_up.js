@@ -5,12 +5,8 @@ function setRole(role) {
   const idInput = document.getElementById('idNumber');
   const isStudent = role === 'student';
 
-  studentButton.className = isStudent
-    ? 'flex items-center justify-center gap-2 py-2 px-3 rounded text-label-md font-label-md transition-all bg-primary text-on-primary shadow-sm'
-    : 'flex items-center justify-center gap-2 py-2 px-3 rounded text-label-md font-label-md text-on-surface-variant hover:text-on-surface transition-all';
-  facultyButton.className = isStudent
-    ? 'flex items-center justify-center gap-2 py-2 px-3 rounded text-label-md font-label-md text-on-surface-variant hover:text-on-surface transition-all'
-    : 'flex items-center justify-center gap-2 py-2 px-3 rounded text-label-md font-label-md transition-all bg-primary text-on-primary shadow-sm';
+  studentButton.classList.toggle('is-active', isStudent);
+  facultyButton.classList.toggle('is-active', !isStudent);
   idLabel.textContent = isStudent ? 'Student ID' : 'Employee ID';
   idInput.placeholder = isStudent ? 'STU-2025-8841' : 'FAC-2025-1092';
 }
@@ -22,3 +18,18 @@ function togglePasswordVisibility(fieldId, triggerButton) {
   field.type = visible ? 'text' : 'password';
   icon.textContent = visible ? 'visibility_off' : 'visibility';
 }
+
+document.querySelectorAll('[data-signup-role]').forEach((button) => {
+  button.addEventListener('click', () => setRole(button.dataset.signupRole));
+});
+document.querySelectorAll('.password-toggle').forEach((button) => {
+  button.addEventListener('click', () => togglePasswordVisibility(button.closest('.password-field').querySelector('input').id, button));
+});
+document.getElementById('signup-form').addEventListener('submit', (event) => {
+  event.preventDefault();
+  const password = document.getElementById('password').value;
+  const confirmation = document.getElementById('confirmPassword').value;
+  const error = document.getElementById('signup-error');
+  error.hidden = password === confirmation;
+  error.textContent = error.hidden ? '' : 'Passwords must match.';
+});

@@ -1,0 +1,33 @@
+/* Reports page shell. The report cards intentionally keep their Tailwind classes
+   because this document is also fetched as a fragment by admin pages. */
+:root {
+  --reports-ink: #091426;
+  --reports-text: #131b2e;
+  --reports-muted: #45474c;
+  --reports-line: #c5c6cd;
+  --reports-blue: #0058be;
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; min-width: 320px; }
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 20;
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--reports-blue);
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  footer nav { flex-wrap: wrap; justify-content: center; gap: .75rem; }
+}

@@ -1,5 +1,3 @@
-let currentRole = 'student';
-
 const roleData = {
   student: {
     title: 'Campus Member Access',
@@ -34,24 +32,20 @@ const roleData = {
 };
 
 function selectTab(role) {
-  currentRole = role;
-  ['student', 'dept', 'super'].forEach((tabName) => {
-    const tab = document.getElementById(`tab-${tabName}`);
-    if (!tab) return;
-    tab.className = tabName === role
-      ? 'flex flex-col items-center justify-center py-2.5 px-2 rounded font-label-sm text-label-sm transition-all duration-150 bg-surface-container-lowest text-primary shadow-sm border border-outline-variant font-semibold'
-      : 'flex flex-col items-center justify-center py-2.5 px-2 rounded font-label-sm text-label-sm transition-all duration-150 text-on-surface-variant hover:text-primary';
-  });
-
   const config = roleData[role];
   if (!config) return;
-  document.getElementById('role-title').innerText = config.title;
-  document.getElementById('role-subtext').innerText = config.subtext;
-  document.getElementById('role-icon').innerText = config.icon;
-  document.getElementById('label-identifier').innerText = config.identifierLabel;
+  document.querySelectorAll('[data-role-tab]').forEach((tab) => {
+    const active = tab.dataset.roleTab === role;
+    tab.classList.toggle('is-active', active);
+    tab.setAttribute('aria-selected', String(active));
+  });
+  document.getElementById('role-title').textContent = config.title;
+  document.getElementById('role-subtext').textContent = config.subtext;
+  document.getElementById('role-icon').textContent = config.icon;
+  document.getElementById('label-identifier').textContent = config.identifierLabel;
   document.getElementById('identifier-input').placeholder = config.emailPlaceholder;
-  document.getElementById('btn-text').innerText = config.btnText;
-  document.getElementById('dept-selector-wrapper').classList.toggle('hidden', !config.hasDept);
+  document.getElementById('btn-text').textContent = config.btnText;
+  document.getElementById('dept-selector-wrapper').hidden = !config.hasDept;
 }
 
 function setRole(role) {
@@ -65,5 +59,15 @@ function togglePasswordVisibility() {
   const passwordIcon = document.getElementById('pwd-icon');
   const visible = passwordInput.type === 'password';
   passwordInput.type = visible ? 'text' : 'password';
-  passwordIcon.innerText = visible ? 'visibility_off' : 'visibility';
+  passwordIcon.textContent = visible ? 'visibility_off' : 'visibility';
+  document.getElementById('password-toggle').setAttribute('aria-label', visible ? 'Hide password' : 'Show password');
 }
+
+document.querySelectorAll('[data-role-tab]').forEach((tab) => {
+  tab.addEventListener('click', () => selectTab(tab.dataset.roleTab));
+});
+document.querySelectorAll('[data-demo-role]').forEach((button) => {
+  button.addEventListener('click', () => setRole(button.dataset.demoRole));
+});
+document.getElementById('password-toggle').addEventListener('click', togglePasswordVisibility);
+document.getElementById('login-form').addEventListener('submit', (event) => event.preventDefault());
