@@ -455,46 +455,7 @@ Super-Admin).
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.8\textwidth}{!}{%
-  \begin{tikzpicture}[
-      action/.style={draw, thick, rounded corners=6pt, minimum width=4.6cm, minimum height=0.9cm, align=center, font=\sffamily\small, fill=blue!5},
-      decision/.style={draw, thick, diamond, aspect=2.4, align=center, font=\sffamily\footnotesize, fill=yellow!12, inner sep=1pt},
-      startstop/.style={draw, thick, circle, fill=black, minimum size=0.3cm},
-      finish/.style={draw, thick, circle, fill=black, minimum size=0.35cm},
-      arrowstyle/.style={-Latex, thick}
-    ]
-    \node[startstop] (start) at (0,15) {};
-    \node[action] (submit) at (0,13.7) {Submit issue\\(photo, category, location)};
-    \node[action] (suggest) at (0,12.2) {Auto-suggest department \&\\check for duplicates};
-    \node[decision] (dupdec) at (0,10.4) {Duplicate\\found?};
-    \node[action] (upvote) at (-4.2,8.6) {Show candidate;\\reporter upvotes existing issue};
-    \node[action] (create) at (4.2,8.6) {Create issue\\(status: Reported)};
-    \node[action] (notifyadmin) at (4.2,7.1) {Notify owning\\Administrator};
-    \node[action] (checkesc) at (-4.2,6.8) {Check escalation threshold};
-    \node[decision] (escdec) at (-4.2,5.0) {Threshold\\crossed?};
-    \node[action] (escalate) at (-8.4,3.2) {Mark High Priority;\\notify Super-Admin};
-    \node[action] (updatestatus) at (2,4.4) {Administrator updates status\\(Reported $\to$ Ongoing $\to$ Finished)};
-    \node[action] (notifyreporter) at (2,2.8) {Notify original reporter};
-    \node[finish] (end) at (2,1.3) {};
-    \node[draw, thick, circle, fill=black, inner sep=2pt] () at (2,1.3) {};
-    \draw[draw, thick, circle, fill=white] (2,1.3) circle (0.22cm);
-    \draw[draw, thick, circle, fill=black] (2,1.3) circle (0.11cm);
-
-    \draw[arrowstyle] (start) -- (submit);
-    \draw[arrowstyle] (submit) -- (suggest);
-    \draw[arrowstyle] (suggest) -- (dupdec);
-    \draw[arrowstyle] (dupdec) -| node[near start, above]{yes} (upvote);
-    \draw[arrowstyle] (dupdec) -| node[near start, above]{no} (create);
-    \draw[arrowstyle] (create) -- (notifyadmin);
-    \draw[arrowstyle] (upvote) -- (checkesc);
-    \draw[arrowstyle] (checkesc) -- (escdec);
-    \draw[arrowstyle] (escdec) -| node[near start, above]{yes} (escalate);
-    \draw[arrowstyle] (escdec) -| node[near start, left]{no} (updatestatus);
-    \draw[arrowstyle] (notifyadmin) |- (updatestatus);
-    \draw[arrowstyle] (escalate.south) -- ++(0,-0.9) -| (updatestatus.west);
-    \draw[arrowstyle] (updatestatus) -- (notifyreporter);
-    \draw[arrowstyle] (notifyreporter) -- (2,1.6);
-  \end{tikzpicture}}
+  \includegraphics[width=0.85\textwidth]{activity_diagram.png}
   \caption{UML activity diagram for the core issue reporting and resolution workflow.}
   \label{fig:activity}
 \end{figure}
