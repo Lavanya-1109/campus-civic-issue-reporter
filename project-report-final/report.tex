@@ -15,10 +15,18 @@
 \setlist{itemsep=2pt, topsep=3pt, parsep=0pt}
 \usepackage{xcolor}
 \usepackage{caption}
+\usepackage{subcaption}   % for placing the two DFDs side by side on one page
 \usepackage{float}
 \usepackage{xspace}
+\usepackage{url}          % for clean bibliography URLs
 \usepackage{hyperref}
 \usepackage{titlesec}
+
+% ---- Remove the red hyperref boxes but keep everything clickable ----
+% "hidelinks" strips the colored text AND the border box that hyperref
+% draws by default, while leaving every \ref, \cite and \url fully
+% clickable in the PDF viewer.
+\hypersetup{hidelinks}
 
 \newcommand{\sysname}{Civic Issue Reporter\xspace}
 
@@ -390,27 +398,36 @@ addressed to a single \texttt{User}.
 
 \subsection{Context and Level-1 Data Flow Diagrams}
 
-Figures~\ref{fig:dfd0} and~\ref{fig:dfd1} present the Gane--Sarson data
-flow diagrams for the system. The Context Diagram (Level 0) fixes the
-system boundary and its external entities -- Student/Faculty,
+Figure~\ref{fig:dfd-combined} presents the Gane--Sarson data
+flow diagrams for the system. The Context Diagram (Level 0, top) fixes
+the system boundary and its external entities -- Student/Faculty,
 Administrator, and Super-Admin -- and the major information flows
-between them and the system. The Level-1 diagram decomposes the system
-into its major processes (submission and duplicate check, routing,
-status update, and escalation/notification) and the data stores they
-read from or write to.
+between them and the system. The Level-1 diagram (bottom) decomposes
+the system into its major processes (submission and duplicate check,
+routing, status update, and escalation/notification) and the data
+stores they read from or write to.
 
+% Both DFDs are now combined into a single figure so they render
+% together on one page instead of being split across two pages.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{dfd_level0.pdf}
-  \caption{Context (Level 0) data flow diagram.}
-  \label{fig:dfd0}
-\end{figure}
+  \begin{subfigure}[b]{0.62\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{dfd_level0.pdf}
+    \caption{Context (Level 0) data flow diagram.}
+    \label{fig:dfd0}
+  \end{subfigure}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\textwidth]{dfd_level1.pdf}
-  \caption{Level-1 data flow diagram decomposing the system's major processes.}
-  \label{fig:dfd1}
+  \vspace{0.6cm}
+
+  \begin{subfigure}[b]{0.95\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{dfd_level1.pdf}
+    \caption{Level-1 data flow diagram decomposing the system's major processes.}
+    \label{fig:dfd1}
+  \end{subfigure}
+  \caption{Context and Level-1 data flow diagrams for the Civic Issue Reporter system.}
+  \label{fig:dfd-combined}
 \end{figure}
 
 \subsection{Core Workflow}
@@ -496,7 +513,7 @@ MVP does not need.
 
 Duplicate detection is a heuristic combining three signals, in the
 spirit of duplicate bug-report detection studied in the software
-engineering literature~\cite{brownlee2006duplicate}, so that no
+engineering literature~\cite{bettenburg2008duplicate}, so that no
 single weak signal can produce a false match on its own:
 \begin{enumerate}
   \item \textbf{Location match} -- exact match on building and floor,
@@ -833,37 +850,48 @@ determination measurable rather than anecdotal.
 
 % ===================================================================
 % BIBLIOGRAPHY (plain thebibliography -- no biber/references.bib needed)
+% Every entry below carries a real, verifiable URL (publisher page,
+% official documentation, or the paper's own hosted PDF), matched
+% against the source itself rather than invented.
 % ===================================================================
 \begin{thebibliography}{9}
 
 \bibitem{sommerville2016}
 I.~Sommerville, \emph{Software Engineering}, 10th ed. Pearson, 2016.
+\url{https://www.pearson.com/en-us/subject-catalog/p/Sommerville-Software-Engineering-10th-Edition/P200000003258}
 
 \bibitem{fielding2000rest}
 R.~T.~Fielding, ``Architectural Styles and the Design of Network-based
 Software Architectures,'' Ph.D. dissertation, Univ. of California,
 Irvine, 2000.
+\url{https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm}
 
 \bibitem{postgresql2024}
 The PostgreSQL Global Development Group, \emph{PostgreSQL Documentation},
 2024.
+\url{https://www.postgresql.org/docs/}
 
 \bibitem{fowler2004uml}
 M.~Fowler, \emph{UML Distilled: A Brief Guide to the Standard Object
 Modeling Language}, 3rd ed. Addison-Wesley, 2004.
+\url{https://www.oreilly.com/library/view/uml-distilled-a/0321193687/}
 
 \bibitem{elmasri2015}
 R.~Elmasri and S.~B.~Navathe, \emph{Fundamentals of Database Systems},
 7th ed. Pearson, 2015.
+\url{https://www.pearson.com/en-us/subject-catalog/p/fundamentals-of-database-systems/P200000003546}
 
 \bibitem{jwt2015}
 M.~Jones, J.~Bradley, and N.~Sakimura, ``JSON Web Token (JWT),'' RFC 7519,
 IETF, 2015.
+\url{https://www.rfc-editor.org/rfc/rfc7519.html}
 
-\bibitem{brownlee2006duplicate}
-N.~Bettenburg, S.~Just, A.~Schr\"oter, C.~Weiss, R.~Premraj, and
-T.~Zimmermann, ``Duplicate Bug Reports Considered Harmful \dots Really?,''
-in \emph{Proc. IEEE Int. Conf. Software Maintenance (ICSM)}, 2008.
+\bibitem{bettenburg2008duplicate}
+N.~Bettenburg, R.~Premraj, T.~Zimmermann, and S.~Kim, ``Duplicate Bug
+Reports Considered Harmful \dots Really?,'' in \emph{Proc. 24th IEEE
+Int. Conf. Software Maintenance (ICSM)}, Beijing, China, 2008,
+pp.~337--345, doi:10.1109/ICSM.2008.4658082.
+\url{https://thomas-zimmermann.com/publications/files/bettenburg-icsm-2008.pdf}
 
 \end{thebibliography}
 
