@@ -3,7 +3,7 @@
 % ==================== Imports ====================
 \usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
-\usepackage{amssymb} % required for \checkmark used in the roles table
+\usepackage{amssymb} % kept for general math symbols
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric,shapes.multipart,arrows.meta,positioning,calc,fit,backgrounds,decorations.pathreplacing}
 \usepackage{pgf-umlcd}
@@ -18,8 +18,18 @@
 \usepackage{float}
 \usepackage{xspace}
 \usepackage{hyperref}
+\usepackage{titlesec}
 
 \newcommand{\sysname}{Civic Issue Reporter\xspace}
+
+% ==================== Title formatting: right-aligned ====================
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\raggedleft}
+  {\chaptertitlename\ \thechapter}{20pt}{\Huge\raggedleft}
+\titleformat{\section}
+  {\normalfont\Large\bfseries\raggedleft}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\raggedleft}{\thesubsection}{1em}{}
 
 \begin{document}
 \raggedbottom
@@ -34,17 +44,21 @@
   {\large A Role-Based Web Platform for Reporting, Routing, and Resolving\\
   Campus Infrastructure Issues at TIET\par}
   \vspace{2cm}
-  \begin{tabular}{l}
-    \texttt{1024030227} Lavanya Sharma \\
-    \texttt{1024030309} Parismita Thapa \\
-    \texttt{1024030389} Rudra Yadav \\
-    \texttt{1024030291} Nadeem Esrar
-  \end{tabular}
-  \vspace{1.5cm}
+  \textbf{Submitted by:}\par
+  \vspace{6pt}
+  \texttt{1024030227} Lavanya Sharma\par
+  \texttt{1024030309} Parismita Thapa\par
+  \texttt{1024030389} Rudra Yadav\par
+  \texttt{1024030291} Nadeem Esrar\par
 
-  \large BE Third Year, Computer Engineering (COE)\par
-  \vspace{1cm}
-  Advisor: Ms.\ Anushka\par
+  \vspace{1.2cm}
+  \large Group: \texttt{3C22} \quad BE Third Year, Computer Engineering (COE)\par
+  \vspace{1.2cm}
+
+  \textbf{Submitted to:}\par
+  \vspace{6pt}
+  Ms.\ Anushka\par
+
   \vfill
   {\large Mid-Semester Evaluation\par}
   \vspace{0.2cm}
@@ -387,71 +401,14 @@ read from or write to.
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.85\textwidth}{!}{%
-  \begin{tikzpicture}[
-      entity/.style={draw, thick, minimum width=2.6cm, minimum height=1.3cm, align=center, font=\sffamily\small},
-      process/.style={draw, thick, circle, minimum size=2.6cm, align=center, font=\sffamily\small},
-      arrowstyle/.style={-Latex, thick, font=\scriptsize\sffamily}
-    ]
-    \node[entity] (student) at (-6,3) {Student /\\Faculty};
-    \node[entity] (admin) at (-6,-3) {Administrator};
-    \node[entity] (super) at (6,-3) {Super-Admin};
-    \node[process] (sys) at (0,0) {0\\Civic Issue\\Reporter\\System};
-
-    \draw[arrowstyle] (student) -- node[above, sloped]{issue report (photo, category, location)} (sys);
-    \draw[arrowstyle] (sys) -- node[below, sloped]{status \& upvote/duplicate notifications} (student);
-    \draw[arrowstyle] (admin) -- node[above, sloped]{status update} (sys);
-    \draw[arrowstyle] (sys) -- node[below, sloped]{new-report / department issue list} (admin);
-    \draw[arrowstyle] (sys) -- node[above, sloped]{escalation alert / all-department view} (super);
-    \draw[arrowstyle] (super) -- node[below, sloped]{escalation threshold config} (sys);
-  \end{tikzpicture}}
+  \includegraphics[width=0.8\textwidth]{dfd_level0.pdf}
   \caption{Context (Level 0) data flow diagram.}
   \label{fig:dfd0}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \resizebox{\textwidth}{!}{%
-  \begin{tikzpicture}[
-      entity/.style={draw, thick, minimum width=2.4cm, minimum height=1.1cm, align=center, font=\sffamily\small},
-      process/.style={draw, thick, circle, minimum size=2.2cm, align=center, font=\sffamily\footnotesize},
-      store/.style={draw, thick, minimum width=3cm, minimum height=0.9cm, align=center, font=\sffamily\footnotesize, path picture={
-        \draw ([yshift=-0.3cm]path picture bounding box.north west) -- ([yshift=-0.3cm]path picture bounding box.north east);
-        \draw ([yshift=0.3cm]path picture bounding box.south west) -- ([yshift=0.3cm]path picture bounding box.south east);
-      }},
-      arrowstyle/.style={-Latex, thick, font=\scriptsize\sffamily}
-    ]
-    \node[entity] (reporter) at (-8,4) {Student /\\Faculty};
-    \node[entity] (admin) at (-8,-4) {Administrator};
-    \node[entity] (super) at (8,-4) {Super-Admin};
-
-    \node[process] (p1) at (-3.5,4) {1\\Submit \&\\Check\\Duplicate};
-    \node[process] (p2) at (0,0)   {2\\Route to\\Department};
-    \node[process] (p3) at (-3.5,-4) {3\\Update\\Status};
-    \node[process] (p4) at (4,4)  {4\\Check\\Escalation};
-    \node[process] (p5) at (8,0)  {5\\Generate\\Notification};
-
-    \node[store] (d1) at (0,-6) {D1 \\ Issues};
-    \node[store] (d2) at (4,-6) {D2 \\ Departments};
-    \node[store] (d3) at (0,7)  {D3 \\ Upvotes};
-    \node[store] (d4) at (8,-6) {D4 \\ Notifications};
-
-    \draw[arrowstyle] (reporter) -- node[above,sloped]{new issue (photo, cat., loc.)} (p1);
-    \draw[arrowstyle] (p1) -- node[above,sloped]{candidate query} (d1);
-    \draw[arrowstyle] (p1) -- node[left,sloped]{upvote (if duplicate)} (d3);
-    \draw[arrowstyle] (p1) -- node[above,sloped]{new issue} (p2);
-    \draw[arrowstyle] (p2) -- node[below,sloped]{dept. lookup} (d2);
-    \draw[arrowstyle] (p2) -- node[right,sloped]{routed issue} (d1);
-    \draw[arrowstyle] (admin) -- node[above,sloped]{status change} (p3);
-    \draw[arrowstyle] (p3) -- node[below,sloped]{update} (d1);
-    \draw[arrowstyle] (d3) -- node[right,sloped]{upvote count} (p4);
-    \draw[arrowstyle] (p4) -- node[above,sloped]{priority flag} (d1);
-    \draw[arrowstyle] (p3) -- node[above,sloped]{status event} (p5);
-    \draw[arrowstyle] (p4) -- node[right,sloped]{escalation event} (p5);
-    \draw[arrowstyle] (p5) -- node[below,sloped]{store} (d4);
-    \draw[arrowstyle] (p5) -- node[above,sloped]{escalation alert} (super);
-    \draw[arrowstyle] (d1) -- node[below,sloped]{dept. issue list} (admin);
-  \end{tikzpicture}}
+  \includegraphics[width=\textwidth]{dfd_level1.pdf}
   \caption{Level-1 data flow diagram decomposing the system's major processes.}
   \label{fig:dfd1}
 \end{figure}
@@ -688,10 +645,10 @@ pilot generates usage data.
   \textbf{Role} & \textbf{Report} & \textbf{View all}
     & \textbf{Upvote} & \textbf{Change status} & \textbf{Scope} \\
   \midrule
-  Student        & \checkmark & \checkmark & \checkmark & --         & -- \\
-  Faculty        & \checkmark & \checkmark & \checkmark & --         & -- \\
-  Administrator  & --         & \checkmark & --         & \checkmark & Own department \\
-  Super-Admin    & --         & \checkmark & --         & \checkmark & All departments \\
+  Student        & Yes & Yes & Yes & --  & -- \\
+  Faculty        & Yes & Yes & Yes & --  & -- \\
+  Administrator  & --  & Yes & --  & Yes & Own department \\
+  Super-Admin    & --  & Yes & --  & Yes & All departments \\
   \bottomrule
 \end{tabular}
 \caption{Role-based permission matrix verified by integration tests.}
